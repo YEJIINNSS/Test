@@ -205,14 +205,20 @@ export default function Case1() {
       </>
       ) : null}
 
-     
+      {flags[3] ? (
+        <Patient 
+          handleClick={() => {
+            setFlag(4, true);  // 약품 선택 페이지
+          }}
+        />
+      ) : null}
       
 
     //  {flags[4] ? (
           <div className="flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
-              Choose the best treatment options.
+              Choose the best treatment options. ddddddd
             </span>
           </div>
           <div className="flex flex-row items-center w-full gap-5 justify-between mt-14">
