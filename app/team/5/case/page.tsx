@@ -118,17 +118,50 @@ export default function Case1() {
     }
   };
 
+  const wrongFlags = [
+    [15, 16, 17, 18, 19], // 환자 1
+    [20, 21, 22, 23, 24], // 환자 2
+    [25, 26, 27, 28, 29], // 환자 3
+    [30, 31, 32, 33, 34], // 환자 4
+    [35, 36, 37, 38, 39], // 환자 5
+    [40, 41, 42, 43, 44] // 환자 6
+  ];
+
+  const productChooseResults = [
+    productChooseResult1,
+    productChooseResult2,
+    productChooseResult3,
+    productChooseResult4,
+    productChooseResult5,
+    productChooseResult6
+  ];
+
+  const getWrongProductIndexes = (patientIndex: number) => {
+    switch (patientIndex) {
+      case 0: return [1, 2, 3, 4, 5]; // 1번 환자 : 1번 제외 약품
+      case 1: return [0, 1, 3, 4, 5]; // 2번 환자 : 3번 제외 약품
+      case 2: return [0, 2, 3, 4, 5]; // 3번 환자 : 2번 제외 약품
+      case 3: return [0, 1, 2, 3, 5]; // 4번 환자 : 5번 제외 약품
+      case 4: return [0, 1, 2, 3, 4]; // 5번 환자 : 6번 제외 약품
+      case 5: return [0, 1, 2, 4, 5]; // 6번 환자 : 4번 제외 약품
+      default: return [];
+    }
+  };
+
   const handleProductSelection = (index: number) => {
     const currentFlagIndex = selectedPatientIndex + 3; // 3, 4, 5, 6, 7, 8 환자 선택창 
     const correctPageFlagIndex = selectedPatientIndex + 9; // 9, 10, 11, 12, 13, 14 Correct
-    const wrongPageFlagIndex = selectedPatientIndex + 15; // 15~ Wrong
+    
+    const wrongProductIndexes = getWrongProductIndexes(selectedPatientIndex);
+    const wrongIndex = wrongProductIndexes.indexOf(index);
 
     if (index === correctProductIndex) {
       setFlag(currentFlagIndex, false);
       setFlag(correctPageFlagIndex, true);  // 환자 Correct 페이지로 이동
-    } else {
-      setFlag(currentFlagIndex, false);
-      setFlag(wrongPageFlagIndex, true);  // 환자 Wrong 페이지로 이동
+    } else if (wrongIndex !== -1) {
+        const wrongPageFlagIndex = selectedPatientIndex * 5 + 15 + wrongIndex;
+        setFlag(currentFlagIndex, false);
+        setFlag(wrongPageFlagIndex, true);  // Wrong 페이지로 이동
     }
   };
 
@@ -408,6 +441,16 @@ export default function Case1() {
         <Correct text={productChooseResult6[3]} handleClick={() => handleClick(3)}/>
       ) : null}
 
+      {wrongFlags[selectedPatientIndex].map((flagIndex, idx) => (
+      flags[flagIndex] ? (
+        <Wrong
+          key={flagIndex}
+          text={productChooseResults[selectedPatientIndex][getWrongProductIndexes(selectedPatientIndex)[idx]]}
+          handleClick={() => handleClick(3)}
+        />
+      ) : null
+    ))}
+    
     </div>
   );
 }
