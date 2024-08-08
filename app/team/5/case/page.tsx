@@ -309,7 +309,6 @@ export default function Case1() {
 
       {flags[3] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
               Choose the best treatment options.
@@ -336,7 +335,6 @@ export default function Case1() {
 
       {flags[4] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -363,7 +361,6 @@ export default function Case1() {
 
       {flags[5] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -390,7 +387,6 @@ export default function Case1() {
 
       {flags[6] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -417,7 +413,6 @@ export default function Case1() {
 
       {flags[7] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -444,7 +439,6 @@ export default function Case1() {
   
       {flags[8] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
