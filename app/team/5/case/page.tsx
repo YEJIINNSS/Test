@@ -284,12 +284,12 @@ export default function Case1() {
       {flags[2] ? (
         <div className="flex flex-col items-center justify-center">
           <BackBtn handleClick = {goBack}/>
-          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-5">
-            <span className="text-xl text-gray-500">
+          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-8">
+            <span className="text-xl font-bold text-gray-500">
               Okay. who will be taking the medicine?
             </span>
           </div>
-          <div className="flex flex-col justify-center w-full gap-5 justify-between mt-2">
+          <div className="flex flex-col justify-center w-full gap-3 justify-between mt-2">
             {TEAM_5_PATIENT.map((text, index) => (
             <div className="shadow-lg opacity-90">
               
