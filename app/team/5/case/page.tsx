@@ -156,16 +156,19 @@ export default function Case1() {
       {/* 의사와 환자와의 대화 flag idx 1*/}
       {script.map((item, index) => (
         flags[index+1] ? (
-          <div className="flex flex-col items-center justify-center">
+          <>
             <BackBtn handleClick = {() => handleBackBtn(index)}/>
+
               <Question text={item.question} />
-              <div className="flex flex-col justify-center w-full gap-5 justify-between mt-12">
+
+              <div className="flex flex-col justify-center w-[75%] gap-5 justify-between mt-12">
               <TextBtn
               text={item.answer}
               handleClick={() => handleClick(index)}
               />
+            
             </div>
-          </div>
+          </>
         ) : null
       ))}
 
