@@ -9,12 +9,13 @@ import TEAM_5_PATIENT from "@/app/constants/5/PatientData";
 import BackBtn from "@/app/components/case/BackBtn";
 import Correct from "@/app/components/case/Correct";
 import Wrong from "@/app/components/case/Wrong";
-import productChooseResult1 from "@/app/constants/5/productChooseResult1";
-import productChooseResult2 from "@/app/constants/5/productChooseResult2";
-import productChooseResult3 from "@/app/constants/5/productChooseResult3";
-import productChooseResult4 from "@/app/constants/5/productChooseResult4";
-import productChooseResult5 from "@/app/constants/5/productChooseResult5";
-import productChooseResult6 from "@/app/constants/5/productChooseResult6";
+import productChooseResult1 from "@/app/constants/5/productChooseResult/productChooseResult1";
+import productChooseResult2 from "@/app/constants/5/productChooseResult/productChooseResult2";
+import productChooseResult3 from "@/app/constants/5/productChooseResult/productChooseResult3";
+import productChooseResult4 from "@/app/constants/5/productChooseResult/productChooseResult4";
+import productChooseResult5 from "@/app/constants/5/productChooseResult/productChooseResult5";
+import productChooseResult6 from "@/app/constants/5/productChooseResult/productChooseResult6";
+
 
 export default function Case1() {
 
@@ -24,8 +25,7 @@ export default function Case1() {
   const [selectedPatientIndex, setSelectedPatientIndex] = useState(0);
   const [correctProductIndex, setCorrectProductIndex] = useState(-1);
   const [previousFlagIndex, setPreviousFlagIndex] = useState<number | null>(null); //직전 FlagIndex
-  //const [history, setHistory] = useState<number[]>([]);
-
+ 
   // Example function to update a specific flag
   const setFlag = (index: number, value: boolean) => {
     setFlags(prevFlags => {
@@ -34,42 +34,6 @@ export default function Case1() {
       return newFlags;
     });
   };
-
-{/*
-  const addHistory = (index: number) => {
-    setHistory(prevHistory => [...prevHistory, index]);
-  };
-
-  const goBack = () => {
-    setHistory(prevHistory => {
-      const newHistory = [...prevHistory];
-      const lastIndex = newHistory.pop();
-      if (lastIndex !== undefined) {
-        setFlags(prevFlags => {
-          const newFlags = [...prevFlags];
-          newFlags[lastIndex] = false;
-          return newFlags;
-        });
-        const previousIndex = newHistory[newHistory.length - 1];
-        if (previousIndex !== undefined) {
-          setFlags(prevFlags => {
-            const newFlags = [...prevFlags];
-            newFlags[previousIndex] = true;
-            return newFlags;
-          });
-        }
-      }
-      return newHistory;
-    });
-  };
-  
-
-  const setFlag = (index: number, value: boolean) => {
-    updateFlag(index, value);
-    addHistory(index);
-  };
-
-*/}
 
   interface Script {
     question: string;
@@ -82,14 +46,7 @@ export default function Case1() {
       answer: 
         "Patient: I came to get some cold medicine."
     }
-   // {
-   //   question: "Me(pharmacist): Okay, who will be taking the medicine?",
-   //   answer:"Patient: Me and I am 34 years old."
-   // }
-
   ]
-
-  // console.log("length: ",script.length)
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
