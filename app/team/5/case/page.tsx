@@ -158,24 +158,27 @@ export default function Case1() {
         flags[index+1] ? (
           <>
             <BackBtn handleClick = {() => handleBackBtn(index)}/>
-            <Question text={item.question} />
-            <TextBtn
+            <div className="flex flex-col items-center justify-center">
+              <Question text={item.question} />
+              <div className="flex flex-col justify-center w-full gap-5 justify-between mt-12">
+              <TextBtn
               text={item.answer}
               handleClick={() => handleClick(index)}
-            />
+              />
+            </div>
+            </div>
           </>
         ) : null
       ))}
 
     {flags[2] ? (
-      <>
         <div className="flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
               Okay. who will be taking the medicine?
             </span>
           </div>
-          <div className="flex flex-col justify-center w-[75%] gap-5 justify-between mt-14">
+          <div className="flex flex-col justify-center w-full gap-5 justify-between mt-2">
             {TEAM_5_PATIENT.map((text, index) => (
             <div className="shadow-lg opacity-90">
               <BackBtn handleClick = {() => handleBackBtn(1)}/>
@@ -193,7 +196,6 @@ export default function Case1() {
             ))}
           </div>
         </div>
-      </>
       ) : null}
 
       {flags[3] ? (
