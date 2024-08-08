@@ -12,11 +12,11 @@ function Wrong({
     return (
       <>
         <div className="fixed w-full h-screen bg-[#FF0017] opacity-20 -z-10" />
-        <div className="flex flex-col items-center justify-center w-[60%] bg-white opacity-90 rounded-lg mb-24 p-6">
-          <span className="font-bold"> <br /> Please try again!</span> 
-          <span className="text-s whitespace-pre-line w-full text-center mt-2">
+        <div className="flex flex-col items-center justify-center w-[60%] bg-white opacity-90 rounded-lg mt-24 p-6">
+          <span className="text-s whitespace-pre-line w-full text-center">
             { text }
           </span>
+          <span className="font-bold">Please try again!<br /></span>
           <Image
             src="/wrong.png"
             alt="wrong"
