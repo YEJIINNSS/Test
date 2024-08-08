@@ -9,7 +9,12 @@ import BackBtn from "@/app/components/case/BackBtn";
 import Correct from "@/app/components/case/Correct";
 import Wrong from "@/app/components/case/Wrong";
 import Patient from "@/app/components/case/Patient";
-
+import productChooseResult1 from "@/app/constants/5/productChooseResult1";
+import productChooseResult2 from "@/app/constants/5/productChooseResult2";
+import productChooseResult3 from "@/app/constants/5/productChooseResult3";
+import productChooseResult4 from "@/app/constants/5/productChooseResult4";
+import productChooseResult5 from "@/app/constants/5/productChooseResult5";
+import productChooseResult6 from "@/app/constants/5/productChooseResult6";
 
 export default function Case1() {
 
@@ -36,57 +41,12 @@ export default function Case1() {
       question: "Me(pharmacist): Hi, how are you? How can I help you?",
       answer: 
         "Patient: I came to get some cold medicine."
-    },
+    }
    // {
    //   question: "Me(pharmacist): Okay, who will be taking the medicine?",
    //   answer:"Patient: Me and I am 34 years old."
-    
    // }
-  ]
-
-  const patientChooseResult = [
-
-      "My daughter, and she's 4 years old.\n"+
-      "She has a bad cough and sore throat."
-    ,
-      "My father, and he's 68 years old with a history of high blood pressure and diabetes.\n"+
-      "He has severe nasal congestion and headache."
-    ,  
-      "My uncle, and he's 57 years old. He's been experiencing body aches and fever.\n"+
-      "He has acetaminophen hypersensitivity."
-    ,
-      "My son, and he's 30 months old. He has a runny nose and keeps sneezing."
-    ,
-      "My mom, and she's 54 years old. She is currently complaining of a persistent, severe cough and headache.\n"+
-      "She is now taking ibuprofen to relieve cold-induced pain."
-    ,
-      "My wife who's 30 years old and is in the last 3 months of pregnancy.\n"+
-      "She exercised vigorously in cold weather and caught a cold. She has a fever along with muscle pain and sprain."
-    
-  ]
-
-
-  const productChooseResult = [
-    
-      "Coldaewon Cold-Q Syrup includes caffeine anhydride which the patient does not prefer.\n"+
-      "In addition, caffeine anhydride inhibits iron absorption when taking iron supplements.\n"+
-      "It is recommended to have a 2 hour interval between taking the syrup and the iron supplement.\n"+
-      "This should be the last option."
-    ,
- 
-      "Coldaewon Kids Cold Syrup contains acetaminophen, chlorpheniramine, dextromethorphan, methylephedrine, and guaiphenesin which has the following effects:\n"+
-      "- Acetaminophen : suitable for curing headaches and fever.\n"+
-      "- Chlorpheniramine : suitable for curing a runny nose.\n"+
-      "- Methylephedrine : suitable for curing a stuffy nose.\n"+
-      "- Dextromethorphan, guaiphenesin : suitable for curing cough.\n"+
-      "(Since it is a Kids syrup, adults should take higher doses.)"
-
-    ,
-    "Coldaewon Kidsfen Syrup is mainly used to reduce fever\n and might not cover all the patients’ symptoms such as coughing, runny and stuffy nose."
-    ,
-    "Coldaewon Kids Ibufen Syrup contains ibuprofen which is unsuitable to take together with dexibuprofen(dental medication),\nresulting in the overdose of NSAIDs."
-    
-
+   
   ]
 
   // console.log("length: ",script.length)
@@ -243,7 +203,7 @@ export default function Case1() {
 */}
       {flags[5] ? (
         <Wrong 
-          text={productChooseResult[1]} 
+          text={productChooseResult1[1]} 
           handleClick={() => {
             setFlag(4, true);  // 약품 선택 페이지
             setFlag(5, false);   
@@ -251,11 +211,11 @@ export default function Case1() {
         />
       ) : null}
       {flags[6] ? (
-        <Correct text={productChooseResult[0]} handleClick={() => handleClick(18)}/>
+        <Correct text={productChooseResult1[0]} handleClick={() => handleClick(18)}/>
       ) : null}
       {flags[7] ? (
         <Wrong 
-        text={productChooseResult[2]} 
+        text={productChooseResult1[2]} 
         handleClick={() => {
           setFlag(4, true);  // 약품 선택 페이지
           setFlag(7, false);   
@@ -264,7 +224,7 @@ export default function Case1() {
       ) : null}
       {flags[8] ? (
         <Wrong 
-        text={productChooseResult[2]} 
+        text={productChooseResult1[2]} 
         handleClick={() => {
           setFlag(4, true);  // 약품 선택 페이지
           setFlag(8, false);   
