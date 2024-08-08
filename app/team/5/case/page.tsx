@@ -156,26 +156,22 @@ export default function Case1() {
       {/* 의사와 환자와의 대화 flag idx 1*/}
       {script.map((item, index) => (
         flags[index+1] ? (
-          <>
+          <div className="flex flex-col items-center justify-center">
             <BackBtn handleClick = {() => handleBackBtn(index)}/>
-            <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-5">
               <Question text={item.question} />
-            </div>
-            <div className="flex flex-col justify-center w-full gap-5 justify-between mt-2">
+              <div className="flex flex-col justify-center w-full gap-5 justify-between mt-12">
               <TextBtn
               text={item.answer}
               handleClick={() => handleClick(index)}
               />
             </div>
-            </div>
-          </>
+          </div>
         ) : null
       ))}
 
     {flags[2] ? (
         <div className="flex flex-col items-center justify-center">
-          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-5">
+          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-">
             <span className="text-xl text-gray-500">
               Okay. who will be taking the medicine?
             </span>
