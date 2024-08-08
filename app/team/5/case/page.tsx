@@ -262,7 +262,7 @@ export default function Case1() {
       {script.map((item, index) => (
         flags[index+1] ? (
           <>
-              <Link href="/team/2/otc-info" className="fixed left-10 top-10">
+              <Link href="/team/5/otc-info" className="fixed left-10 top-10">
                 <div className="bg-[#5BC17F] px-5 py-2 rounded-full">
                 <span className="text-white">Go Back to Info Page</span>
                 </div>
@@ -284,7 +284,7 @@ export default function Case1() {
       {flags[2] ? (
         <div className="flex flex-col items-center justify-center">
           <BackBtn handleClick = {goBack}/>
-          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-">
+          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-5">
             <span className="text-xl text-gray-500">
               Okay. who will be taking the medicine?
             </span>
