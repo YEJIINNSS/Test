@@ -125,10 +125,10 @@ export default function Case1() {
 
     if (index === correctProductIndex) {
       setFlag(currentFlagIndex, false);
-      setFlag(correctPageFlagIndex, true);  // 환자별 Correct 페이지로 이동
+      setFlag(correctPageFlagIndex, true);  // 환자 Correct 페이지로 이동
     } else {
       setFlag(currentFlagIndex, false);
-      setFlag(wrongPageFlagIndex, true);  // 환자별 Wrong 페이지로 이동
+      setFlag(wrongPageFlagIndex, true);  // 환자 Wrong 페이지로 이동
     }
   };
 
@@ -202,6 +202,7 @@ export default function Case1() {
 
       {flags[2] ? (
         <div className="flex flex-col items-center justify-center">
+          <BackBtn handleClick = {() => handleBackBtn(1)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-">
             <span className="text-xl text-gray-500">
               Okay. who will be taking the medicine?
@@ -388,11 +389,23 @@ export default function Case1() {
       ) : null}
 
       {flags[10] ? (
-        <Correct text={productChooseResult2[0]} handleClick={() => handleClick(3)}/>
+        <Correct text={productChooseResult2[2]} handleClick={() => handleClick(3)}/>
       ) : null}
 
       {flags[11] ? (
-        <Correct text={productChooseResult2[0]} handleClick={() => handleClick(3)}/>
+        <Correct text={productChooseResult3[1]} handleClick={() => handleClick(3)}/>
+      ) : null}
+
+      {flags[12] ? (
+        <Correct text={productChooseResult4[4]} handleClick={() => handleClick(3)}/>
+      ) : null}
+
+      {flags[13] ? (
+        <Correct text={productChooseResult5[5]} handleClick={() => handleClick(3)}/>
+      ) : null}
+
+      {flags[14] ? (
+        <Correct text={productChooseResult6[3]} handleClick={() => handleClick(3)}/>
       ) : null}
 
     </div>
