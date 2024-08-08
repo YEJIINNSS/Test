@@ -21,6 +21,8 @@ export default function Case1() {
   const array = new Array(46).fill(false);
   const newArray = [true, ...array];
   const [flags, setFlags] = useState(newArray);
+  const [selectedPatientIndex, setSelectedPatientIndex] = useState(0);
+  const [correctProductIndex, setCorrectProductIndex] = useState(-1);
 
   // Example function to update a specific flag
   const setFlag = (index: number, value: boolean) => {
@@ -62,42 +64,69 @@ export default function Case1() {
     };
   }, []);
 
+  
   const handleClick = (index: number) => {
-    if (flags[2]) {
-      setFlag(2, false);
-      setFlag(4,true);
-      correctProductIndex = getCorrectProductIndex(selectedPatientIndex);
-    } else {
       if (index >= 0 && index < clickHandlers.length) {
       clickHandlers[index]();
       }
+  };
+
+  // 환자 선택 -> 다른 flag로 이동
+  const handlePatientSelection = (index: number) => {
+    setSelectedPatientIndex(index);
+    setCorrectProductIndex(getCorrectProductIndex(index));
+
+    switch (index) {
+      case 0:
+        setFlag(2, false);
+        setFlag(3, true);
+        break;
+      case 1:
+        setFlag(2, false);
+        setFlag(4, true);
+        break;
+      case 2:
+        setFlag(2, false);
+        setFlag(5, true);
+        break;
+      case 3:
+        setFlag(2, false);
+        setFlag(6, true);
+        break;
+      case 4:
+        setFlag(2, false);
+        setFlag(7, true);
+        break;
+      case 5:
+        setFlag(2, false);
+        setFlag(8, true);
+        break;           
+      default:
+        break;
     }
   };
 
   const getCorrectProductIndex = (patientIndex: number) => {
     switch (patientIndex) {
-      case 0: // 1번 환자
-        return 0; // 1번 약품이 correct
-      case 1: // 2번 환자
-        return 2; // 3번 약품이 correct
-      case 2: 
-        return 1; // 2번 약품 correct
-      case 3:
-        return 4; // 5번 약품
-      case 4:
-        return 5; // 6번 약품
-      case 5:
-        return 3; // 4번 약품
-        
-      default:
-        return -1;
+      case 0: return 0; // 1번 환자 : 1번 약품
+      case 1: return 2; // 2번 환자 : 3번 약품
+      case 2: return 1; // 3번 환자 : 2번 약품
+      case 3: return 4; // 4번 환자 : 5번 약품
+      case 4: return 5; // 5번 환자 : 6번 약품
+      case 5: return 3; // 6번 환자 : 4번 약품
+      default: return -1;
     }
   };
 
-  let correctProductIndex = -1;
-  let selectedPatientIndex = 0;
-
-  
+  const handleProductSelection = (index: number) => {
+    if (index === correctProductIndex) {
+      setFlag(3, false);
+      setFlag(5, true);  // Correct 페이지로 이동
+    } else {
+      setFlag(3, false);
+      setFlag(4, true);  // Wrong 페이지로 이동
+    }
+  };
 
   {/* 의사와 환자와의 대화 flag idx 1 */}
   const clickHandlers:any = [];
@@ -140,18 +169,13 @@ export default function Case1() {
         objectPosition="center"
         className="-z-10"
       />
-      
       <Footer/>
-
-
 
       {flags[0] ? (
         <div className="flex items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 fixed bottom-[15%]">
           <span className="text-xl text-gray-500">(Patient walks in...)</span>
         </div>
       ) : null}
-
-
 
       {/* 의사와 환자와의 대화 flag idx 1*/}
       {script.map((item, index) => (
@@ -172,7 +196,7 @@ export default function Case1() {
         ) : null
       ))}
 
-    {flags[2] ? (
+      {flags[2] ? (
         <div className="flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-">
             <span className="text-xl text-gray-500">
@@ -185,14 +209,8 @@ export default function Case1() {
               <BackBtn handleClick = {() => handleBackBtn(1)}/>
               <TextBtn
               text={text.patient}
-              handleClick={() => {
-                setFlag(2, false);
-                setFlag(3, true);
-                selectedPatientIndex = index;
-              }}
-            
+              handleClick={() => handlePatientSelection(index)}
               />
-
               </div>
             ))}
           </div>
@@ -200,7 +218,7 @@ export default function Case1() {
       ) : null}
 
       {flags[3] ? (
-          <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
               Choose the best treatment options.
@@ -216,15 +234,7 @@ export default function Case1() {
                 name={product.name}
                 ingredient={product.ingredient}
                 formulation={product.formulation}
-                handleClick={() => {
-                  if (index === correctProductIndex) {
-                    setFlag(4, false);  // Wrong 페이지로 넘어가기
-                    setFlag(5, true);   // Correct 페이지로 넘어가기
-                  } else {
-                    setFlag(5, false);  // Correct 페이지로 넘어가기
-                    setFlag(6, true);   // Wrong 페이지로 넘어가기
-                  }
-                }}
+                handleClick={() => handleProductSelection(index)}
               />
               </div>
             ))}
@@ -234,38 +244,135 @@ export default function Case1() {
       ) : null}
 
       {flags[4] ? (
-        <Wrong 
-          text={productChooseResult1[0]} 
-          handleClick={() => {
-            setFlag(3, true);  // 약품 선택 페이지
-            setFlag(4, false);   
-          }}
-        />
+        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
+          <span className="text-xl text-gray-500">
+            Choose the best treatment options.
+          </span>
+        </div>
+        <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
+          {TEAM_5_PROUDCT.map((product, index) => (
+          <div className="shadow-lg opacity-90">
+ 
+            <ProductBtn 
+              src={product.src}
+              alt={product.alt}
+              name={product.name}
+              ingredient={product.ingredient}
+              formulation={product.formulation}
+              handleClick={() => handleProductSelection(index)}
+            />
+            </div>
+          ))}
+   
+        </div>
+      </div>
       ) : null}
 
       {flags[5] ? (
-        <Correct text={productChooseResult1[1]} handleClick={() => handleClick(18)}/>
+        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
+          <span className="text-xl text-gray-500">
+            Choose the best treatment options.
+          </span>
+        </div>
+        <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
+          {TEAM_5_PROUDCT.map((product, index) => (
+          <div className="shadow-lg opacity-90">
+ 
+            <ProductBtn 
+              src={product.src}
+              alt={product.alt}
+              name={product.name}
+              ingredient={product.ingredient}
+              formulation={product.formulation}
+              handleClick={() => handleProductSelection(index)}
+            />
+            </div>
+          ))}
+   
+        </div>
+      </div>
       ) : null}
 
       {flags[6] ? (
-        <Wrong 
-        text={productChooseResult1[2]} 
-        handleClick={() => {
-          setFlag(3, true);  // 약품 선택 페이지
-          setFlag(6, false);   
-        }}
-      />
+        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
+          <span className="text-xl text-gray-500">
+            Choose the best treatment options.
+          </span>
+        </div>
+        <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
+          {TEAM_5_PROUDCT.map((product, index) => (
+          <div className="shadow-lg opacity-90">
+ 
+            <ProductBtn 
+              src={product.src}
+              alt={product.alt}
+              name={product.name}
+              ingredient={product.ingredient}
+              formulation={product.formulation}
+              handleClick={() => handleProductSelection(index)}
+            />
+            </div>
+          ))}
+   
+        </div>
+      </div>
       ) : null}
+
       {flags[7] ? (
-        <Wrong 
-        text={productChooseResult1[2]} 
-        handleClick={() => {
-          setFlag(3, true);  // 약품 선택 페이지
-          setFlag(7, false);   
-        }}
-      />
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
+            <span className="text-xl text-gray-500">
+              Choose the best treatment options.
+            </span>
+          </div>
+          <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
+            {TEAM_5_PROUDCT.map((product, index) => (
+            <div className="shadow-lg opacity-90">
+   
+              <ProductBtn 
+                src={product.src}
+                alt={product.alt}
+                name={product.name}
+                ingredient={product.ingredient}
+                formulation={product.formulation}
+                handleClick={() => handleProductSelection(index)}
+              />
+              </div>
+            ))}
+     
+          </div>
+        </div>
       ) : null}
   
+      {flags[8] ? (
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
+            <span className="text-xl text-gray-500">
+              Choose the best treatment options.
+            </span>
+          </div>
+          <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
+            {TEAM_5_PROUDCT.map((product, index) => (
+            <div className="shadow-lg opacity-90">
+   
+              <ProductBtn 
+                src={product.src}
+                alt={product.alt}
+                name={product.name}
+                ingredient={product.ingredient}
+                formulation={product.formulation}
+                handleClick={() => handleProductSelection(index)}
+              />
+              </div>
+            ))}
+     
+          </div>
+        </div>
+      ) : null}
+
     </div>
   );
 }
