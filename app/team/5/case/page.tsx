@@ -23,14 +23,47 @@ export default function Case1() {
   const [selectedPatientIndex, setSelectedPatientIndex] = useState(0);
   const [correctProductIndex, setCorrectProductIndex] = useState(-1);
   const [previousFlagIndex, setPreviousFlagIndex] = useState<number | null>(null); //직전 FlagIndex
+  const [history, setHistory] = useState<number[]>([]);
 
   // Example function to update a specific flag
-  const setFlag = (index: number, value: boolean) => {
+  const updateFlag = (index: number, value: boolean) => {
     setFlags(prevFlags => {
       const newFlags = [...prevFlags];
       newFlags[index] = value;
       return newFlags;
     });
+  };
+
+  const addHistory = (index: number) => {
+    setHistory(prevHistory => [...prevHistory, index]);
+  };
+
+  const goBack = () => {
+    setHistory(prevHistory => {
+      const newHistory = [...prevHistory];
+      const lastIndex = newHistory.pop();
+      if (lastIndex !== undefined) {
+        setFlags(prevFlags => {
+          const newFlags = [...prevFlags];
+          newFlags[lastIndex] = false;
+          return newFlags;
+        });
+        const previousIndex = newHistory[newHistory.length - 1];
+        if (previousIndex !== undefined) {
+          setFlags(prevFlags => {
+            const newFlags = [...prevFlags];
+            newFlags[previousIndex] = true;
+            return newFlags;
+          });
+        }
+      }
+      return newHistory;
+    });
+  };
+
+  const setFlag = (index: number, value: boolean) => {
+    updateFlag(index, value);
+    addHistory(index);
   };
 
   interface Script {
@@ -228,7 +261,7 @@ export default function Case1() {
       {script.map((item, index) => (
         flags[index+1] ? (
           <>
-            <BackBtn handleClick = {() => handleBackBtn(index)}/>
+            <BackBtn handleClick = {goBack}/>
 
               <Question text={item.question} />
 
@@ -245,7 +278,7 @@ export default function Case1() {
 
       {flags[2] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(1)}/>
+          <BackBtn handleClick = {goBack}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-">
             <span className="text-xl text-gray-500">
               Okay. who will be taking the medicine?
@@ -267,7 +300,7 @@ export default function Case1() {
 
       {flags[3] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
+          <BackBtn handleClick = {goBack}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
               Choose the best treatment options.
@@ -294,7 +327,7 @@ export default function Case1() {
 
       {flags[4] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
+          <BackBtn handleClick = {goBack}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -321,7 +354,7 @@ export default function Case1() {
 
       {flags[5] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
+          <BackBtn handleClick = {goBack}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -348,7 +381,7 @@ export default function Case1() {
 
       {flags[6] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
+          <BackBtn handleClick = {goBack}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -375,7 +408,7 @@ export default function Case1() {
 
       {flags[7] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
+          <BackBtn handleClick = {goBack}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -402,7 +435,7 @@ export default function Case1() {
   
       {flags[8] ? (
         <div className="flex flex-col items-center justify-center">
-          <BackBtn handleClick = {() => handleBackBtn(2)}/>
+          <BackBtn handleClick = {goBack}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
