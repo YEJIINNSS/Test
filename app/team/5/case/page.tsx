@@ -46,7 +46,7 @@ export default function Case1() {
    //   question: "Me(pharmacist): Okay, who will be taking the medicine?",
    //   answer:"Patient: Me and I am 34 years old."
    // }
-   
+
   ]
 
   // console.log("length: ",script.length)
@@ -62,6 +62,42 @@ export default function Case1() {
     };
   }, []);
 
+  const handleClick = (index: number) => {
+    if (flags[2]) {
+      setFlag(2, false);
+      setFlag(4,true);
+      correctProductIndex = getCorrectProductIndex(selectedPatientIndex);
+    } else {
+      if (index >= 0 && index < clickHandlers.length) {
+      clickHandlers[index]();
+      }
+    }
+  };
+
+  const getCorrectProductIndex = (patientIndex: number) => {
+    switch (patientIndex) {
+      case 0: // 1번 환자
+        return 0; // 1번 약품이 correct
+      case 1: // 2번 환자
+        return 2; // 3번 약품이 correct
+      case 2: 
+        return 1; // 2번 약품 correct
+      case 3:
+        return 4; // 5번 약품
+      case 4:
+        return 5; // 6번 약품
+      case 5:
+        return 3; // 4번 약품
+        
+      default:
+        return -1;
+    }
+  };
+
+  let correctProductIndex = -1;
+  let selectedPatientIndex = 0;
+
+  
 
   {/* 의사와 환자와의 대화 flag idx 1 */}
   const clickHandlers:any = [];
@@ -76,16 +112,10 @@ export default function Case1() {
   for (let i = (idx+1); i < (idx+1) + TEAM_5_PROUDCT.length; i++) {
     clickHandlers.push(() => {
       setFlag(3, false);  // 약품 선택 페이지
-      setFlag(i+1, true);   // flag idx 18~21
+      setFlag(i+1, true);   // flag idx 4~9
     });
   }
   // Access handler functions by index
-  const handleClick = (index: number) => {
-    if (index >= 0 && index < clickHandlers.length) {
-      clickHandlers[index]();
-    }
-  };
-
 
   const backBtnHandlers:any = [];
   for (let i = 1; i <= clickHandlers.length ; i++) {
@@ -154,6 +184,7 @@ export default function Case1() {
               handleClick={() => {
                 setFlag(2, false);
                 setFlag(3, true);
+                selectedPatientIndex = index;
               }}
             
               />
@@ -166,16 +197,6 @@ export default function Case1() {
       ) : null}
 
       {flags[3] ? (
-        <Patient 
-          handleClick={() => {
-            setFlag(3, false);
-            setFlag(4, true);  // 약품 선택 페이지
-          }}
-        />
-      ) : null}
-      
-
-    {/*  {flags[4] ? (
           <div className="flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
@@ -192,7 +213,15 @@ export default function Case1() {
                 name={product.name}
                 ingredient={product.ingredient}
                 formulation={product.formulation}
-                handleClick={() => handleClick(3+index)}
+                handleClick={() => {
+                  if (index === correctProductIndex) {
+                    setFlag(4, false);  // Wrong 페이지로 넘어가기
+                    setFlag(5, true);   // Correct 페이지로 넘어가기
+                  } else {
+                    setFlag(5, false);  // Correct 페이지로 넘어가기
+                    setFlag(6, true);   // Wrong 페이지로 넘어가기
+                  }
+                }}
               />
               </div>
             ))}
@@ -200,34 +229,36 @@ export default function Case1() {
           </div>
         </div>
       ) : null}
-*/}
-      {flags[5] ? (
+
+      {flags[4] ? (
         <Wrong 
-          text={productChooseResult1[1]} 
+          text={productChooseResult1[0]} 
           handleClick={() => {
-            setFlag(4, true);  // 약품 선택 페이지
-            setFlag(5, false);   
+            setFlag(3, true);  // 약품 선택 페이지
+            setFlag(4, false);   
           }}
         />
       ) : null}
+
+      {flags[5] ? (
+        <Correct text={productChooseResult1[1]} handleClick={() => handleClick(18)}/>
+      ) : null}
+
       {flags[6] ? (
-        <Correct text={productChooseResult1[0]} handleClick={() => handleClick(18)}/>
+        <Wrong 
+        text={productChooseResult1[2]} 
+        handleClick={() => {
+          setFlag(3, true);  // 약품 선택 페이지
+          setFlag(6, false);   
+        }}
+      />
       ) : null}
       {flags[7] ? (
         <Wrong 
         text={productChooseResult1[2]} 
         handleClick={() => {
-          setFlag(4, true);  // 약품 선택 페이지
+          setFlag(3, true);  // 약품 선택 페이지
           setFlag(7, false);   
-        }}
-      />
-      ) : null}
-      {flags[8] ? (
-        <Wrong 
-        text={productChooseResult1[2]} 
-        handleClick={() => {
-          setFlag(4, true);  // 약품 선택 페이지
-          setFlag(8, false);   
         }}
       />
       ) : null}
