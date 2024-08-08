@@ -23,6 +23,7 @@ export default function Case1() {
   const [flags, setFlags] = useState(newArray);
   const [selectedPatientIndex, setSelectedPatientIndex] = useState(0);
   const [correctProductIndex, setCorrectProductIndex] = useState(-1);
+  const [previousFlagIndex, setPreviousFlagIndex] = useState<number | null>(null); //직전 FlagIndex
 
   // Example function to update a specific flag
   const setFlag = (index: number, value: boolean) => {
@@ -160,8 +161,17 @@ export default function Case1() {
       setFlag(correctPageFlagIndex, true);  // 환자 Correct 페이지로 이동
     } else if (wrongIndex !== -1) {
         const wrongPageFlagIndex = selectedPatientIndex * 5 + 15 + wrongIndex;
+        setPreviousFlagIndex(currentFlagIndex); //현재 flagindex 저장
         setFlag(currentFlagIndex, false);
         setFlag(wrongPageFlagIndex, true);  // Wrong 페이지로 이동
+    }
+  };
+
+  const handleWrongClick = (flagIndex: number) => {
+    if (previousFlagIndex !== null) {
+      setFlag(flagIndex, false);
+      setFlag(previousFlagIndex, true); // 이전 flagindex로 이동
+      setPreviousFlagIndex(null);
     }
   };
 
@@ -181,8 +191,8 @@ export default function Case1() {
       setFlag(i+1, true);   // flag idx 4~9
     });
   }
+ 
   // Access handler functions by index
-
   const backBtnHandlers:any = [];
   for (let i = 1; i <= clickHandlers.length ; i++) {
     backBtnHandlers.push(() => {
@@ -190,6 +200,7 @@ export default function Case1() {
       setFlag(i-1, true);
     });
   }
+
   const handleBackBtn = (index: number) => {
     if (index >= 0 && index < backBtnHandlers.length) {
       backBtnHandlers[index]();
@@ -444,9 +455,10 @@ export default function Case1() {
       {wrongFlags[selectedPatientIndex].map((flagIndex, idx) => (
       flags[flagIndex] ? (
         <Wrong
-          key={flagIndex}
           text={productChooseResults[selectedPatientIndex][getWrongProductIndexes(selectedPatientIndex)[idx]]}
-          handleClick={() => handleClick(3)}
+          handleClick={() =>{
+            handleWrongClick(flagIndex)
+          }}
         />
       ) : null
     ))}
