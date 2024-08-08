@@ -8,14 +8,17 @@ const TEAM_5_PATIENT = [
       "He has severe nasal congestion and headache.",
   },
   {
-    patient: "My uncle, and he's 57 years old. He's been experiencing body aches and fever.\n"+
+    patient: "My uncle, and he's 57 years old.\n"+
+      "He's been experiencing body aches and fever.\n"+
       "He has acetaminophen hypersensitivity.",
   },
   {
-    patient: "My son, and he's 30 months old. He has a runny nose and keeps sneezing.",
+    patient: "My son, and he's 30 months old.\n"+
+      "He has a runny nose and keeps sneezing.",
   },
   {
-    patient: "My mom, and she's 54 years old. She is currently complaining of a persistent, severe cough and headache.\n"+
+    patient: "My mom, and she's 54 years old.\n"+
+      "She is currently complaining of a persistent, severe cough and headache.\n"+
       "She is now taking ibuprofen to relieve cold-induced pain.",
   },
   {
