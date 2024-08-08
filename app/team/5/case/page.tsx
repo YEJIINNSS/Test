@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TextBtn, Question, ProductBtn, Footer } from '../../../components';
 import TEAM_5_PROUDCT from "@/app/constants/5/productData";
@@ -261,7 +262,11 @@ export default function Case1() {
       {script.map((item, index) => (
         flags[index+1] ? (
           <>
-            <BackBtn handleClick = {goBack}/>
+              <Link href="/team/2/otc-info" className="fixed left-10 top-10">
+                <div className="bg-[#5BC17F] px-5 py-2 rounded-full">
+                <span className="text-white">Go Back to Info Page</span>
+                </div>
+              </Link>
 
               <Question text={item.question} />
 
