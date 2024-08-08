@@ -9,6 +9,13 @@ import TEAM_5_PATIENT from "@/app/constants/5/PatientData";
 import BackBtn from "@/app/components/case/BackBtn";
 import Correct from "@/app/components/case/Correct";
 import Wrong from "@/app/components/case/Wrong";
+import React from "react";
+import CheckBoxChoose from "@/app/components/case/CheckBoxChoose";
+
+import CHECKBOX1 from "@/app/constants/5/CheckboxList/Checkbox1";
+import CHECKBOX2 from "@/app/constants/5/CheckboxList/Checkbox2";
+import CHECKBOX3 from "@/app/constants/5/CheckboxList/Checkbox3";
+
 import productChooseResult1 from "@/app/constants/5/productChooseResult/productChooseResult1";
 import productChooseResult2 from "@/app/constants/5/productChooseResult/productChooseResult2";
 import productChooseResult3 from "@/app/constants/5/productChooseResult/productChooseResult3";
@@ -19,13 +26,14 @@ import productChooseResult6 from "@/app/constants/5/productChooseResult/productC
 
 export default function Case1() {
 
-  const array = new Array(46).fill(false);
+  const array = new Array(58).fill(false);
   const newArray = [true, ...array];
   const [flags, setFlags] = useState(newArray);
   const [selectedPatientIndex, setSelectedPatientIndex] = useState(0);
   const [correctProductIndex, setCorrectProductIndex] = useState(-1);
   const [previousFlagIndex, setPreviousFlagIndex] = useState<number | null>(null); //직전 FlagIndex
- 
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
   // Example function to update a specific flag
   const setFlag = (index: number, value: boolean) => {
     setFlags(prevFlags => {
@@ -64,6 +72,16 @@ export default function Case1() {
       if (index >= 0 && index < clickHandlers.length) {
       clickHandlers[index]();
       }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, currentFlagIndex: number, correctAnswers: number[], nextFlagIndex: number) => {
+    e.preventDefault();
+    const allCorrect = correctAnswers.every(answer => selectedItems.includes(answer));
+    
+    if (allCorrect) {
+      setFlag(currentFlagIndex, false);
+      setFlag(nextFlagIndex, true);
+    }
   };
 
   // 환자 선택 -> 다른 flag로 이동
@@ -167,6 +185,21 @@ export default function Case1() {
       setFlag(previousFlagIndex, true); // 이전 flagindex로 이동
       setPreviousFlagIndex(null);
     }
+  };
+
+  const handleCorrectClick = (flagIndex: number, checkboxFlagIndex: number) => {
+    setFlag(flagIndex, false);
+    setFlag(checkboxFlagIndex, true);
+  };
+
+  const handleCheckboxChange = (index: number) => {
+    setSelectedItems(prevSelectedItems => {
+      if (prevSelectedItems.includes(index)) {
+        return prevSelectedItems.filter(item => item !== index);
+      } else {
+        return [...prevSelectedItems, index];
+      }
+    });
   };
 
   {/* 의사와 환자와의 대화 flag idx 1 */}
@@ -421,27 +454,27 @@ export default function Case1() {
       ) : null}
 
       {flags[9] ? (
-        <Correct text={productChooseResult1[0]} handleClick={() => handleClick(3)}/>
+        <Correct text={productChooseResult1[0]} handleClick={() => handleCorrectClick(9, 45)}/>
       ) : null}
 
       {flags[10] ? (
-        <Correct text={productChooseResult2[2]} handleClick={() => handleClick(3)}/>
+        <Correct text={productChooseResult2[2]} handleClick={() => handleCorrectClick(10, 46)}/>
       ) : null}
 
       {flags[11] ? (
-        <Correct text={productChooseResult3[1]} handleClick={() => handleClick(3)}/>
+        <Correct text={productChooseResult3[1]} handleClick={() => handleCorrectClick(11, 47)}/>
       ) : null}
 
       {flags[12] ? (
-        <Correct text={productChooseResult4[4]} handleClick={() => handleClick(3)}/>
+        <Correct text={productChooseResult4[4]} handleClick={() => handleCorrectClick(12, 48)}/>
       ) : null}
 
       {flags[13] ? (
-        <Correct text={productChooseResult5[5]} handleClick={() => handleClick(3)}/>
+        <Correct text={productChooseResult5[5]} handleClick={() => handleCorrectClick(13, 49)}/>
       ) : null}
 
       {flags[14] ? (
-        <Correct text={productChooseResult6[3]} handleClick={() => handleClick(3)}/>
+        <Correct text={productChooseResult6[3]} handleClick={() => handleCorrectClick(14, 50)}/>
       ) : null}
 
       {wrongFlags[selectedPatientIndex].map((flagIndex, idx) => (
@@ -454,7 +487,33 @@ export default function Case1() {
         />
       ) : null
     ))}
-    
+
+      {flags[45] ? (
+        <CheckBoxChoose
+          items={CHECKBOX1.map(item => item.item)}
+          onSubmit={(e) => handleSubmit(e, 45, [0, 1, 4, 5], 51)}
+          selectedItems={selectedItems}
+          onCheckboxChange={handleCheckboxChange}
+        />
+      ) : null}
+
+      {flags[46] ? (
+        <CheckBoxChoose
+          items={CHECKBOX2.map(item => item.item)}
+          onSubmit={(e) => handleSubmit(e, 46, [0, 1, 3, 4, 7, 8], 52)}
+          selectedItems={selectedItems}
+          onCheckboxChange={handleCheckboxChange}
+        />
+      ) : null}
+
+
+
+      {flags[51] ? (
+        <div className="flex items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90">
+        <span className="text-xl text-gray-500">All correct for flag 45</span>
+      </div>
+      ) : null}
+
     </div>
   );
 }
