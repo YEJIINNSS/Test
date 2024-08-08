@@ -159,8 +159,10 @@ export default function Case1() {
           <>
             <BackBtn handleClick = {() => handleBackBtn(index)}/>
             <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-5">
               <Question text={item.question} />
-              <div className="flex flex-col justify-center w-full gap-5 justify-between mt-12">
+            </div>
+            <div className="flex flex-col justify-center w-full gap-5 justify-between mt-2">
               <TextBtn
               text={item.answer}
               handleClick={() => handleClick(index)}
@@ -173,7 +175,7 @@ export default function Case1() {
 
     {flags[2] ? (
         <div className="flex flex-col items-center justify-center">
-          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
+          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-5">
             <span className="text-xl text-gray-500">
               Okay. who will be taking the medicine?
             </span>
