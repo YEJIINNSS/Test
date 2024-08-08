@@ -8,7 +8,6 @@ import TEAM_5_PATIENT from "@/app/constants/5/PatientData";
 import BackBtn from "@/app/components/case/BackBtn";
 import Correct from "@/app/components/case/Correct";
 import Wrong from "@/app/components/case/Wrong";
-import Patient from "@/app/components/case/Patient";
 import productChooseResult1 from "@/app/constants/5/productChooseResult1";
 import productChooseResult2 from "@/app/constants/5/productChooseResult2";
 import productChooseResult3 from "@/app/constants/5/productChooseResult3";
