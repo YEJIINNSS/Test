@@ -119,12 +119,16 @@ export default function Case1() {
   };
 
   const handleProductSelection = (index: number) => {
+    const currentFlagIndex = selectedPatientIndex + 3; // 3, 4, 5, 6, 7, 8 환자 선택창 
+    const correctPageFlagIndex = selectedPatientIndex + 9; // 9, 10, 11, 12, 13, 14 Correct
+    const wrongPageFlagIndex = selectedPatientIndex + 15; // 15~ Wrong
+
     if (index === correctProductIndex) {
-      setFlag(3, false);
-      setFlag(5, true);  // Correct 페이지로 이동
+      setFlag(currentFlagIndex, false);
+      setFlag(correctPageFlagIndex, true);  // 환자별 Correct 페이지로 이동
     } else {
-      setFlag(3, false);
-      setFlag(4, true);  // Wrong 페이지로 이동
+      setFlag(currentFlagIndex, false);
+      setFlag(wrongPageFlagIndex, true);  // 환자별 Wrong 페이지로 이동
     }
   };
 
@@ -206,7 +210,7 @@ export default function Case1() {
           <div className="flex flex-col justify-center w-full gap-5 justify-between mt-2">
             {TEAM_5_PATIENT.map((text, index) => (
             <div className="shadow-lg opacity-90">
-              <BackBtn handleClick = {() => handleBackBtn(1)}/>
+              
               <TextBtn
               text={text.patient}
               handleClick={() => handlePatientSelection(index)}
@@ -219,6 +223,7 @@ export default function Case1() {
 
       {flags[3] ? (
         <div className="flex flex-col items-center justify-center">
+          <BackBtn handleClick = {() => handleBackBtn(2)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
               Choose the best treatment options.
@@ -236,7 +241,7 @@ export default function Case1() {
                 formulation={product.formulation}
                 handleClick={() => handleProductSelection(index)}
               />
-              </div>
+            </div>
             ))}
      
           </div>
@@ -245,23 +250,24 @@ export default function Case1() {
 
       {flags[4] ? (
         <div className="flex flex-col items-center justify-center">
-        <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
-          <span className="text-xl text-gray-500">
+          <BackBtn handleClick = {() => handleBackBtn(2)}/>
+          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
+            <span className="text-xl text-gray-500">
             Choose the best treatment options.
-          </span>
-        </div>
-        <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
-          {TEAM_5_PROUDCT.map((product, index) => (
-          <div className="shadow-lg opacity-90">
+            </span>
+          </div>
+          <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
+            {TEAM_5_PROUDCT.map((product, index) => (
+            <div className="shadow-lg opacity-90">
  
-            <ProductBtn 
+              <ProductBtn 
               src={product.src}
               alt={product.alt}
               name={product.name}
               ingredient={product.ingredient}
               formulation={product.formulation}
               handleClick={() => handleProductSelection(index)}
-            />
+              />
             </div>
           ))}
    
@@ -271,23 +277,24 @@ export default function Case1() {
 
       {flags[5] ? (
         <div className="flex flex-col items-center justify-center">
-        <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
-          <span className="text-xl text-gray-500">
+          <BackBtn handleClick = {() => handleBackBtn(2)}/>
+          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
+            <span className="text-xl text-gray-500">
             Choose the best treatment options.
-          </span>
-        </div>
-        <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
-          {TEAM_5_PROUDCT.map((product, index) => (
-          <div className="shadow-lg opacity-90">
+            </span>
+          </div>
+          <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
+            {TEAM_5_PROUDCT.map((product, index) => (
+            <div className="shadow-lg opacity-90">
  
-            <ProductBtn 
+              <ProductBtn 
               src={product.src}
               alt={product.alt}
               name={product.name}
               ingredient={product.ingredient}
               formulation={product.formulation}
               handleClick={() => handleProductSelection(index)}
-            />
+              />
             </div>
           ))}
    
@@ -297,23 +304,24 @@ export default function Case1() {
 
       {flags[6] ? (
         <div className="flex flex-col items-center justify-center">
-        <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
-          <span className="text-xl text-gray-500">
+          <BackBtn handleClick = {() => handleBackBtn(2)}/>
+          <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
+            <span className="text-xl text-gray-500">
             Choose the best treatment options.
-          </span>
-        </div>
-        <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
-          {TEAM_5_PROUDCT.map((product, index) => (
-          <div className="shadow-lg opacity-90">
+            </span>
+          </div>
+          <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
+            {TEAM_5_PROUDCT.map((product, index) => (
+            <div className="shadow-lg opacity-90">
  
-            <ProductBtn 
+              <ProductBtn 
               src={product.src}
               alt={product.alt}
               name={product.name}
               ingredient={product.ingredient}
               formulation={product.formulation}
               handleClick={() => handleProductSelection(index)}
-            />
+              />
             </div>
           ))}
    
@@ -323,54 +331,68 @@ export default function Case1() {
 
       {flags[7] ? (
         <div className="flex flex-col items-center justify-center">
+          <BackBtn handleClick = {() => handleBackBtn(2)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
-              Choose the best treatment options.
+            Choose the best treatment options.
             </span>
           </div>
           <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
             {TEAM_5_PROUDCT.map((product, index) => (
             <div className="shadow-lg opacity-90">
-   
+ 
               <ProductBtn 
-                src={product.src}
-                alt={product.alt}
-                name={product.name}
-                ingredient={product.ingredient}
-                formulation={product.formulation}
-                handleClick={() => handleProductSelection(index)}
+              src={product.src}
+              alt={product.alt}
+              name={product.name}
+              ingredient={product.ingredient}
+              formulation={product.formulation}
+              handleClick={() => handleProductSelection(index)}
               />
-              </div>
-            ))}
-     
-          </div>
+            </div>
+          ))}
+   
         </div>
+      </div>
       ) : null}
   
       {flags[8] ? (
         <div className="flex flex-col items-center justify-center">
+          <BackBtn handleClick = {() => handleBackBtn(2)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
-              Choose the best treatment options.
+            Choose the best treatment options.
             </span>
           </div>
           <div className="flex flex-row items-center justify-center w-full gap-5 justify-between mt-14">
             {TEAM_5_PROUDCT.map((product, index) => (
             <div className="shadow-lg opacity-90">
-   
+ 
               <ProductBtn 
-                src={product.src}
-                alt={product.alt}
-                name={product.name}
-                ingredient={product.ingredient}
-                formulation={product.formulation}
-                handleClick={() => handleProductSelection(index)}
+              src={product.src}
+              alt={product.alt}
+              name={product.name}
+              ingredient={product.ingredient}
+              formulation={product.formulation}
+              handleClick={() => handleProductSelection(index)}
               />
-              </div>
-            ))}
-     
-          </div>
+            </div>
+          ))}
+   
         </div>
+      </div>
+      ) : null}
+
+      {flags[9] ? (
+        <Correct text={productChooseResult1[0]} handleClick={() => handleClick(3)}/>
+      ) : null}
+
+      {flags[10] ? (
+        <Correct text={productChooseResult2[0]} handleClick={() => handleClick(3)}/>
+      ) : null}
+
+      {flags[11] ? (
+        <Correct text={productChooseResult2[0]} handleClick={() => handleClick(3)}/>
       ) : null}
 
     </div>
