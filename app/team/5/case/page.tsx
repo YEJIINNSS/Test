@@ -538,9 +538,9 @@ export default function Case1() {
             answer={TEAM_5_FINALRESULT_ANSWER[0]}
           />
 
-          <Link href="/team/5/otc-info" className="fixed left-10 top-10">
+          <Link href="/" className="fixed left-10 top-10">
             <div className="bg-[#5BC17F] px-5 py-2 rounded-full">
-              <span className="text-white">Go Back to Info Page</span>
+              <span className="text-white">Go Back to Main Page</span>
             </div>
           </Link>
         </>
