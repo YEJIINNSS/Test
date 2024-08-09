@@ -1,4 +1,4 @@
-const rightResult = "All correct!\n"+
+const rightResult = 
 "Patient Consult Instructions:\n"+
 "1. Administer every 4 hours as needed.\n"+
 "2. Administer 5 mL per dose.\n"+
@@ -8,7 +8,7 @@ const rightResult = "All correct!\n"+
 "6. Increase fluid intake."
 
 
-const wrongResult = "Please try again! It appears that you gave wrong information to the patient."
+const wrongResult = "It appears that you gave wrong information to the patient."
 
 const TEAM_5_CONSULT_RESULT_DATA = {
     right: rightResult,

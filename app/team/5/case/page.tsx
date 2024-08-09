@@ -7,16 +7,19 @@ import { TextBtn, Question, ProductBtn, Footer } from '../../../components';
 import TEAM_5_PROUDCT from "@/app/constants/5/productData";
 import TEAM_5_PATIENT from "@/app/constants/5/PatientData";
 import BackBtn from "@/app/components/case/BackBtn";
+import FormCorrect from "@/app/components/case/FormCorrect";
 import Correct from "@/app/components/case/Correct";
 import Wrong from "@/app/components/case/Wrong";
 import Form from "@/app/components/case/Form";
 import React from "react";
-import CheckBoxChoose from "@/app/components/case/CheckBoxChoose";
+import Result from "@/app/components/case/Result";
 import Script from "@/app/components/case/Script";
 import Logo from "@/app/components/global/Logo";
 
-import TEAM_5_CONSULT_RESULT_DATA from "@/app/constants/5/ConsultData/consultData1";
+import TEAM_5_CONSULT_RESULT_DATA1 from "@/app/constants/5/ConsultData/consultData1";
 
+import TEAM_5_FINALRESULT_ANSWER from "@/app/constants/5/FinalResultAns";
+import TEAM_5_FINALRESULT_QUESTION from "@/app/constants/5/FinalResultQ";
 
 import TEAM_5_FORM1 from "@/app/constants/5/FormData/formData1";
 import TEAM_5_FORM2 from "@/app/constants/5/FormData/formData2";
@@ -521,12 +524,21 @@ export default function Case1() {
 
 
       {flags[51] ? (
-        <Correct
-        text = {TEAM_5_CONSULT_RESULT_DATA.right}
+        <FormCorrect
+        text = {TEAM_5_CONSULT_RESULT_DATA1.right}
         handleClick={() => handleCorrectClick(51, 57)
         }
       />
       ) : null}
+
+      {flags[57] ? (
+        <Result
+        question={TEAM_5_FINALRESULT_QUESTION[0]}
+        answer={TEAM_5_FINALRESULT_ANSWER[0]}
+        handleClick={() => handleCorrectClick(57, 1)}
+        />
+      ) : null}
+
     <Logo/>
     </div>
   );

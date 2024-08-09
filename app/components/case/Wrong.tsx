@@ -27,7 +27,7 @@ function Wrong({
           />
         </div>
         <button onClick={handleClick}
-          className="bg-gray-300 rounded-full shadow-lg mt-6 w-60 h-10 flex items-center justify-center">
+          className="bg-[#F79F9F] rounded-full shadow-lg mt-6 w-60 h-10 flex items-center justify-center">
           <span className="text-lg text-white">Try again</span>
         </button>
       </>
