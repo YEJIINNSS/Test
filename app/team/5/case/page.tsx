@@ -16,7 +16,7 @@ import Result from "@/app/components/case/Result";
 import Script from "@/app/components/case/Script";
 import Logo from "@/app/components/global/Logo";
 
-import TEAM_5_CONSULT_RESULT_DATA1 from "@/app/constants/5/ConsultData/consultData1";
+import TEAM_5_CONSULT_RESULT_DATA from "@/app/constants/5/ConsultData";
 
 import TEAM_5_FINALRESULT_ANSWER from "@/app/constants/5/FinalResultAns";
 import TEAM_5_FINALRESULT_QUESTION from "@/app/constants/5/FinalResultQ";
@@ -25,17 +25,17 @@ import TEAM_5_FORM1 from "@/app/constants/5/FormData/formData1";
 import TEAM_5_FORM2 from "@/app/constants/5/FormData/formData2";
 import TEAM_5_FORM3 from "@/app/constants/5/FormData/formData3";
 
-import productChooseResult1 from "@/app/constants/5/productChooseResult/productChooseResult1";
-import productChooseResult2 from "@/app/constants/5/productChooseResult/productChooseResult2";
-import productChooseResult3 from "@/app/constants/5/productChooseResult/productChooseResult3";
-import productChooseResult4 from "@/app/constants/5/productChooseResult/productChooseResult4";
-import productChooseResult5 from "@/app/constants/5/productChooseResult/productChooseResult5";
-import productChooseResult6 from "@/app/constants/5/productChooseResult/productChooseResult6";
+import productChooseResult1 from "@/app/constants/5/ProductChooseResult/productChooseResult1";
+import productChooseResult2 from "@/app/constants/5/ProductChooseResult/productChooseResult2";
+import productChooseResult3 from "@/app/constants/5/ProductChooseResult/productChooseResult3";
+import productChooseResult4 from "@/app/constants/5/ProductChooseResult/productChooseResult4";
+import productChooseResult5 from "@/app/constants/5/ProductChooseResult/productChooseResult5";
+import productChooseResult6 from "@/app/constants/5/ProductChooseResult/productChooseResult6";
 
 
 export default function Case1() {
 
-  const array = new Array(58).fill(false);
+  const array = new Array(65).fill(false);
   const newArray = [true, ...array];
   const [flags, setFlags] = useState(newArray);
   const [selectedPatientIndex, setSelectedPatientIndex] = useState(0);
@@ -521,12 +521,86 @@ export default function Case1() {
         />
       ) : null}
 
+      {flags[47] ? (
+        <Form
+        formData={TEAM_5_FORM3.map(item => item.item)}
+          handleSubmit={(e) => handleSubmit(e, 47, [1, 2, 3, 4, 5, 8], 53)}
+          selectedItems={selectedItems}
+          setSelectedItems={setSelectedItems}
+        />
+      ) : null}
 
+      {flags[48] ? (
+        <Form
+        formData={TEAM_5_FORM2.map(item => item.item)}
+          handleSubmit={(e) => handleSubmit(e, 48, [1, 2, 3, 5, 6], 54)}
+          selectedItems={selectedItems}
+          setSelectedItems={setSelectedItems}
+        />
+      ) : null}
+
+      {flags[49] ? (
+        <Form
+        formData={TEAM_5_FORM2.map(item => item.item)}
+          handleSubmit={(e) => handleSubmit(e, 49, [2, 6, 7], 55)}
+          selectedItems={selectedItems}
+          setSelectedItems={setSelectedItems}
+        />
+      ) : null}
+
+      {flags[50] ? (
+        <Form
+        formData={TEAM_5_FORM2.map(item => item.item)}
+          handleSubmit={(e) => handleSubmit(e, 50, [0, 3, 4, 6], 56)}
+          selectedItems={selectedItems}
+          setSelectedItems={setSelectedItems}
+        />
+      ) : null}
 
       {flags[51] ? (
         <FormCorrect
-        text = {TEAM_5_CONSULT_RESULT_DATA1.right}
+        text = {TEAM_5_CONSULT_RESULT_DATA.right1}
         handleClick={() => handleCorrectClick(51, 57)
+        }
+      />
+      ) : null}
+
+      {flags[52] ? (
+        <FormCorrect
+        text = {TEAM_5_CONSULT_RESULT_DATA.right2}
+        handleClick={() => handleCorrectClick(52, 58)
+        }
+      />
+      ) : null}
+
+      {flags[53] ? (
+        <FormCorrect
+        text = {TEAM_5_CONSULT_RESULT_DATA.right3}
+        handleClick={() => handleCorrectClick(53, 59)
+        }
+      />
+      ) : null}
+
+      {flags[54] ? (
+        <FormCorrect
+        text = {TEAM_5_CONSULT_RESULT_DATA.right4}
+        handleClick={() => handleCorrectClick(54, 60)
+        }
+      />
+      ) : null}
+
+      {flags[55] ? (
+        <FormCorrect
+        text = {TEAM_5_CONSULT_RESULT_DATA.right5}
+        handleClick={() => handleCorrectClick(55, 61)
+        }
+      />
+      ) : null}
+
+      {flags[56] ? (
+        <FormCorrect
+        text = {TEAM_5_CONSULT_RESULT_DATA.right6}
+        handleClick={() => handleCorrectClick(56, 62)
         }
       />
       ) : null}
@@ -545,6 +619,86 @@ export default function Case1() {
           </Link>
         </>
        
+      ) : null}
+
+      {flags[58] ? (
+        <>
+          <Result
+            question={TEAM_5_FINALRESULT_QUESTION[1]}
+            answer={TEAM_5_FINALRESULT_ANSWER[1]}
+          />
+
+          <Link href="/" className="fixed left-10 top-10">
+            <div className="bg-[#5BC17F] px-5 py-2 rounded-full">
+              <span className="text-white">Go Back to Main Page</span>
+            </div>
+          </Link>
+        </>
+       
+      ) : null}
+
+      {flags[59] ? (
+        <>
+          <Result
+            question={TEAM_5_FINALRESULT_QUESTION[2]}
+            answer={TEAM_5_FINALRESULT_ANSWER[2]}
+          />
+
+          <Link href="/" className="fixed left-10 top-10">
+            <div className="bg-[#5BC17F] px-5 py-2 rounded-full">
+              <span className="text-white">Go Back to Main Page</span>
+            </div>
+          </Link>
+        </>
+
+       ) : null}
+       
+      {flags[60] ? (
+        <>
+          <Result
+            question={TEAM_5_FINALRESULT_QUESTION[3]}
+            answer={TEAM_5_FINALRESULT_ANSWER[3]}
+          />
+
+          <Link href="/" className="fixed left-10 top-10">
+            <div className="bg-[#5BC17F] px-5 py-2 rounded-full">
+              <span className="text-white">Go Back to Main Page</span>
+            </div>
+          </Link>
+        </>
+
+      ) : null}
+
+      {flags[61] ? (
+        <>
+          <Result
+            question={TEAM_5_FINALRESULT_QUESTION[4]}
+            answer={TEAM_5_FINALRESULT_ANSWER[4]}
+          />
+
+          <Link href="/" className="fixed left-10 top-10">
+            <div className="bg-[#5BC17F] px-5 py-2 rounded-full">
+              <span className="text-white">Go Back to Main Page</span>
+            </div>
+          </Link>
+        </>
+        
+      ) : null}
+
+      {flags[62] ? (
+        <>
+          <Result
+            question={TEAM_5_FINALRESULT_QUESTION[5]}
+            answer={TEAM_5_FINALRESULT_ANSWER[5]}
+          />
+
+          <Link href="/" className="fixed left-10 top-10">
+            <div className="bg-[#5BC17F] px-5 py-2 rounded-full">
+              <span className="text-white">Go Back to Main Page</span>
+            </div>
+          </Link>
+        </>
+        
       ) : null}
 
     <Logo/>
