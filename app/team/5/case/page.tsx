@@ -9,12 +9,18 @@ import TEAM_5_PATIENT from "@/app/constants/5/PatientData";
 import BackBtn from "@/app/components/case/BackBtn";
 import Correct from "@/app/components/case/Correct";
 import Wrong from "@/app/components/case/Wrong";
+import Form from "@/app/components/case/Form";
 import React from "react";
 import CheckBoxChoose from "@/app/components/case/CheckBoxChoose";
+import Script from "@/app/components/case/Script";
+import Logo from "@/app/components/global/Logo";
 
-import CHECKBOX1 from "@/app/constants/5/CheckboxList/Checkbox1";
-import CHECKBOX2 from "@/app/constants/5/CheckboxList/Checkbox2";
-import CHECKBOX3 from "@/app/constants/5/CheckboxList/Checkbox3";
+import TEAM_5_CONSULT_RESULT_DATA from "@/app/constants/5/ConsultData/consultData1";
+
+
+import TEAM_5_FORM1 from "@/app/constants/5/FormData/formData1";
+import TEAM_5_FORM2 from "@/app/constants/5/FormData/formData2";
+import TEAM_5_FORM3 from "@/app/constants/5/FormData/formData3";
 
 import productChooseResult1 from "@/app/constants/5/productChooseResult/productChooseResult1";
 import productChooseResult2 from "@/app/constants/5/productChooseResult/productChooseResult2";
@@ -74,13 +80,19 @@ export default function Case1() {
       }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, currentFlagIndex: number, correctAnswers: number[], nextFlagIndex: number) => {
+  const handleSubmit = (e: React.FormEvent, currentFlagIndex: number, correctAnswers: number[], nextFlagIndex: number) => {
     e.preventDefault();
+    
     const allCorrect = correctAnswers.every(answer => selectedItems.includes(answer));
     
     if (allCorrect) {
+      console.log('Correct answers selected. Updating flags...');
       setFlag(currentFlagIndex, false);
       setFlag(nextFlagIndex, true);
+    } else {
+      console.log('Wrong answers selected. Updating flags...');
+      setFlag(currentFlagIndex,false);
+      setFlag(nextFlagIndex+6,true);
     }
   };
 
@@ -489,31 +501,33 @@ export default function Case1() {
     ))}
 
       {flags[45] ? (
-        <CheckBoxChoose
-          items={CHECKBOX1.map(item => item.item)}
-          onSubmit={(e) => handleSubmit(e, 45, [0, 1, 4, 5], 51)}
+        <Form
+          formData={TEAM_5_FORM1.map(item => item.item)}
+          handleSubmit={(e) => handleSubmit(e, 45, [0, 1, 4, 5], 51)}
           selectedItems={selectedItems}
-          onCheckboxChange={handleCheckboxChange}
+          setSelectedItems={setSelectedItems}
         />
       ) : null}
 
       {flags[46] ? (
-        <CheckBoxChoose
-          items={CHECKBOX2.map(item => item.item)}
-          onSubmit={(e) => handleSubmit(e, 46, [0, 1, 3, 4, 7, 8], 52)}
+        <Form
+        formData={TEAM_5_FORM2.map(item => item.item)}
+          handleSubmit={(e) => handleSubmit(e, 46, [0, 1, 3, 4, 7, 8], 52)}
           selectedItems={selectedItems}
-          onCheckboxChange={handleCheckboxChange}
+          setSelectedItems={setSelectedItems}
         />
       ) : null}
 
 
 
       {flags[51] ? (
-        <div className="flex items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90">
-        <span className="text-xl text-gray-500">All correct for flag 45</span>
-      </div>
+        <Correct
+        text = {TEAM_5_CONSULT_RESULT_DATA.right}
+        handleClick={() => handleCorrectClick(51, 57)
+        }
+      />
       ) : null}
-
+    <Logo/>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-const CHECKBOX2 = [
+const FORMDATA2 = [
     {
       item: "1. Administer every 4 hours as needed.",
     },
@@ -32,4 +32,4 @@ const CHECKBOX2 = [
          
   ];
   
-  export default CHECKBOX2;
+  export default FORMDATA2;

@@ -1,4 +1,4 @@
-const CHECKBOX3 = [
+const FORMDATA3 = [
     {
       item: "1. Administer 30-40mL per dose.",
     },
@@ -32,4 +32,4 @@ const CHECKBOX3 = [
          
   ];
   
-  export default CHECKBOX3;
+  export default FORMDATA3;
