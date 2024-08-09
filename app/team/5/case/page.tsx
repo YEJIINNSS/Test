@@ -285,7 +285,7 @@ export default function Case1() {
               handleClick={() => handleClick(index)}
               />
             
-            </div>
+              </div>
           </>
         ) : null
       ))}
@@ -532,11 +532,19 @@ export default function Case1() {
       ) : null}
 
       {flags[57] ? (
-        <Result
-        question={TEAM_5_FINALRESULT_QUESTION[0]}
-        answer={TEAM_5_FINALRESULT_ANSWER[0]}
-        handleClick={() => handleCorrectClick(57, 1)}
-        />
+        <>
+          <Result
+            question={TEAM_5_FINALRESULT_QUESTION[0]}
+            answer={TEAM_5_FINALRESULT_ANSWER[0]}
+          />
+
+          <Link href="/team/5/otc-info" className="fixed left-10 top-10">
+            <div className="bg-[#5BC17F] px-5 py-2 rounded-full">
+              <span className="text-white">Go Back to Info Page</span>
+            </div>
+          </Link>
+        </>
+       
       ) : null}
 
     <Logo/>
