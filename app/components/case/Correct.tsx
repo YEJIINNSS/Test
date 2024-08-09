@@ -28,7 +28,7 @@ function Correct({
           </div>
           <button
             onClick={handleClick}
-            className="w-60 h-10 bg-[#B4F3BE] rounded-full shadow-lg mt-12"
+            className="w-60 h-10 bg-[#5BC17F] rounded-full shadow-lg mt-12"
           >
             <span className="text-lg text-white">Go to Patient Consult</span>
           </button>
