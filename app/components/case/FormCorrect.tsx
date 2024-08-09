@@ -16,6 +16,7 @@ function FormCorrect({
             <span className="font-bold">All correct!<br /> </span>
             
             <span className="text-s whitespace-pre-line w-full text-center">
+            <br />
               { text }
             </span>
             <Image
@@ -26,8 +27,7 @@ function FormCorrect({
               className="absolute left-[13%]"
             />
           </div>
-          <button
-            onClick={handleClick}
+          <button onClick={handleClick}
             className="w-60 h-10 bg-[#B4F3BE] rounded-full shadow-lg mt-12"
           >
             <span className="text-lg text-white">See the Result</span>

@@ -560,49 +560,37 @@ export default function Case1() {
       {flags[51] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right1}
-        handleClick={() => handleCorrectClick(51, 57)
-        }
-      />
+        handleClick={() => handleClick(57)}/>
       ) : null}
 
       {flags[52] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right2}
-        handleClick={() => handleCorrectClick(52, 58)
-        }
-      />
+        handleClick={() => handleClick(58)}/>
       ) : null}
 
       {flags[53] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right3}
-        handleClick={() => handleCorrectClick(53, 59)
-        }
-      />
+        handleClick={() => handleClick(59)}/>
       ) : null}
 
       {flags[54] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right4}
-        handleClick={() => handleCorrectClick(54, 60)
-        }
-      />
+        handleClick={() => handleClick(60)}/>
       ) : null}
 
       {flags[55] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right5}
-        handleClick={() => handleCorrectClick(55, 61)
-        }
-      />
+        handleClick={() => handleClick(61)}/>
       ) : null}
 
       {flags[56] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right6}
-        handleClick={() => handleCorrectClick(56, 62)
-        }
-      />
+        handleClick={() => handleClick(62)}/>
       ) : null}
 
       {flags[57] ? (
