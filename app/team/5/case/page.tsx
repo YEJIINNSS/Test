@@ -277,6 +277,14 @@ export default function Case1() {
     }
   };
 
+  const handleWrongFormClick = (checkboxFlagIndex: number) => {
+    if (previousFlagIndex !== null) {
+      setFlag(checkboxFlagIndex, false);
+      setFlag(previousFlagIndex, true); // 이전 flagindex로 이동
+      setPreviousFlagIndex(null);
+    }
+  };
+
   const handleCorrectClick = (flagIndex: number, checkboxFlagIndex: number) => {
     setFlag(flagIndex, false);
     setFlag(checkboxFlagIndex, true);
@@ -701,7 +709,7 @@ export default function Case1() {
         <Wrong 
           text={TEAM_5_CONSULT_RESULT_DATA.wrong}
           handleClick={() =>{
-            handleWrongClick(64);
+            handleWrongFormClick(64);
           }}
         />
       ) : null}
