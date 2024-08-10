@@ -143,7 +143,34 @@ export default function Case1() {
     }
   };
 
+  {/*
+  const goToFinalResult = () => {
+    
+    setTimeout(() => {
+      setFlag(57, false);
+      setFlag(26, true); 
   
+      setTimeout(() => {
+        setFlag(26, false);
+        setFlag(27, true); 
+  
+        setTimeout(() => {
+          setFlag(27, false);
+          setFlag(28, true); 
+
+          setTimeout(() => {
+            setFlag(28, false);
+            setFlag(29, true); 
+          }, 3000);
+
+        }, 3000);
+        
+      }, 3000);
+      
+    }, 3000);
+    
+  }
+    */}
 
   // 환자 선택 -> 다른 flag로 이동
   const handlePatientSelection = (index: number) => {
@@ -608,37 +635,37 @@ export default function Case1() {
       {flags[51] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right1}
-        handleClick={() => handleClick(58)}/>
+        handleClick={() => handleCorrectClick(51, 58)}/>
       ) : null}
 
       {flags[52] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right2}
-        handleClick={() => handleClick(59)}/>
+        handleClick={() => handleCorrectClick(52, 59)}/>
       ) : null}
 
       {flags[53] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right3}
-        handleClick={() => handleClick(60)}/>
+        handleClick={() => handleCorrectClick(53, 60)}/>
       ) : null}
 
       {flags[54] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right4}
-        handleClick={() => handleClick(61)}/>
+        handleClick={() => handleCorrectClick(54, 61)}/>
       ) : null}
 
       {flags[55] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right5}
-        handleClick={() => handleClick(62)}/>
+        handleClick={() => handleCorrectClick(55, 62)}/>
       ) : null}
 
       {flags[56] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right6}
-        handleClick={() => handleClick(63)}/>
+        handleClick={() => handleCorrectClick(56, 63)}/>
       ) : null}
 
       {flags[57] ? (
@@ -647,6 +674,7 @@ export default function Case1() {
             Few Weeks Later... The patient visited the pharmacy.
           </span>
         </div>
+        
       ) : null}
 
       {TEAM_5_FINALRESULT.map((item, index) => (
