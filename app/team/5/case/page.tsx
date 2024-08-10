@@ -81,65 +81,78 @@ export default function Case1() {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+
+    let allConditionsMet = true;
     
-    if (selectedItems.length === TEAM_5_FORM.answer1.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer1.includes(idx)))
-    {
+    if (
+      selectedItems.length === TEAM_5_FORM.answer1.length &&
+      selectedItems.every((idx) => TEAM_5_FORM.answer1.includes(idx))
+    ) {
       setFlag(45, false);
+    } else {
+      allConditionsMet = false;
+      setFlag(45, false);
+    }
+    
+    if (
+      selectedItems.length === TEAM_5_FORM.answer2.length &&
+      selectedItems.every((idx) => TEAM_5_FORM.answer2.includes(idx))
+    ) {
+      setFlag(46, false);
+    } else {
+      allConditionsMet = false;
+      setFlag(46, false);
+    }
+
+    if (
+      selectedItems.length === TEAM_5_FORM.answer3.length &&
+      selectedItems.every((idx) => TEAM_5_FORM.answer3.includes(idx))
+    ) {
+      setFlag(47, false);
+    } else {
+      allConditionsMet = false;
+      setFlag(47, false);
+    }
+
+    if (
+      selectedItems.length === TEAM_5_FORM.answer4.length &&
+      selectedItems.every((idx) => TEAM_5_FORM.answer4.includes(idx))
+    ) {
+      setFlag(48, false);
+    } else {
+      allConditionsMet = false;
+      setFlag(48, false);
+    }
+
+    if (
+      selectedItems.length === TEAM_5_FORM.answer5.length &&
+      selectedItems.every((idx) => TEAM_5_FORM.answer5.includes(idx))
+    ) {
+      setFlag(49, false);
+    } else {
+      allConditionsMet = false;
+      setFlag(49, false);
+    }
+
+    if (
+      selectedItems.length === TEAM_5_FORM.answer6.length &&
+      selectedItems.every((idx) => TEAM_5_FORM.answer6.includes(idx))
+    ) {
+      setFlag(50, false);
+    } else {
+      allConditionsMet = false;
+      setFlag(50, false);
+    }
+
+    if (allConditionsMet) {
       setFlag(51, true);
+      setFlag(52, true);
+      setFlag(53, true);
+      setFlag(54, true);
+      setFlag(55, true);
+      setFlag(56, true);
     } else {
-      setFlag(45,false);
-      setFlag(64,true);
-    }
-
-    if (selectedItems.length === TEAM_5_FORM.answer2.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer2.includes(idx)))
-      {
-      setFlag(46,false);
-      setFlag(52,true);
-    } else {
-      setFlag(46,false);
-      setFlag(64,true);
-    }
-    
-    if (selectedItems.length === TEAM_5_FORM.answer3.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer3.includes(idx)))
-      {
-      setFlag(47,false);
-      setFlag(53,true);
-    } else {
-      setFlag(47,false);
-      setFlag(64,true);
-    }
-    
-    if (selectedItems.length === TEAM_5_FORM.answer4.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer4.includes(idx)))
-      {
-      setFlag(48,false);
-      setFlag(54,true);
-    } else {
-      setFlag(48,false);
-      setFlag(64,true);
-    }
-
-    if (selectedItems.length === TEAM_5_FORM.answer5.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer5.includes(idx)))
-      {
-      setFlag(49,false);
-      setFlag(55,true);
-    } else {
-      setFlag(49,false);
-      setFlag(64,true);
-    }
-    
-    if (selectedItems.length === TEAM_5_FORM.answer6.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer6.includes(idx)))
-      {
-      setFlag(50,false);
-      setFlag(56,true);
-    } else {
-      setFlag(50,false);
-      setFlag(64,true);
+      setFlag(64, true);
     }
   };
 
@@ -290,15 +303,26 @@ export default function Case1() {
     setFlag(checkboxFlagIndex, true);
   };
 
-  const handleCheckboxChange = (index: number) => {
-    setSelectedItems(prevSelectedItems => {
-      if (prevSelectedItems.includes(index)) {
-        return prevSelectedItems.filter(item => item !== index);
-      } else {
-        return [...prevSelectedItems, index];
-      }
-    });
-  };
+  const handleCorrectFormClick = (currentFlagIndex: number, nextFlagIndex: number) => {
+    if (flags[currentFlagIndex]) {
+          setFlags((prevFlags) => {
+              const updatedFlags = [...prevFlags];
+              updatedFlags[57] = true; // flags[57] 표시
+              return updatedFlags;
+          });
+
+          setTimeout(() => {
+          // flags[57]을 해제, 다음 플래그로
+          setFlags((prevFlags) => {
+              const updatedFlags = [...prevFlags];
+                    updatedFlags[57] = false; 
+                    updatedFlags[currentFlagIndex] = false;
+                    updatedFlags[nextFlagIndex] = true;
+                    return updatedFlags;
+                });
+            }, 3000);
+    }
+};
 
   {/* 의사와 환자와의 대화 flag idx 1 */}
   const clickHandlers:any = [];
@@ -643,37 +667,37 @@ export default function Case1() {
       {flags[51] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right1}
-        handleClick={() => handleCorrectClick(51, 58)}/>
+        handleClick={() => handleCorrectFormClick(51, 58)}/>
       ) : null}
 
       {flags[52] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right2}
-        handleClick={() => handleCorrectClick(52, 59)}/>
+        handleClick={() => handleCorrectFormClick(52, 59)}/>
       ) : null}
 
       {flags[53] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right3}
-        handleClick={() => handleCorrectClick(53, 60)}/>
+        handleClick={() => handleCorrectFormClick(53, 60)}/>
       ) : null}
 
       {flags[54] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right4}
-        handleClick={() => handleCorrectClick(54, 61)}/>
+        handleClick={() => handleCorrectFormClick(54, 61)}/>
       ) : null}
 
       {flags[55] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right5}
-        handleClick={() => handleCorrectClick(55, 62)}/>
+        handleClick={() => handleCorrectFormClick(55, 62)}/>
       ) : null}
 
       {flags[56] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right6}
-        handleClick={() => handleCorrectClick(56, 63)}/>
+        handleClick={() => handleCorrectFormClick(56, 63)}/>
       ) : null}
 
       {flags[57] ? (
@@ -687,8 +711,7 @@ export default function Case1() {
 
       {TEAM_5_FINALRESULT.map((item, index) => (
         flags[index+58] ? (
-          <>
-            
+          <>   
             <Question text={item.question} />
             <Question text={item.answer} />
             <Link href="/" className="fixed left-10 top-10">
