@@ -12,7 +12,6 @@ import Correct from "@/app/components/case/Correct";
 import Wrong from "@/app/components/case/Wrong";
 import Form from "@/app/components/case/Form";
 import React from "react";
-import Result from "@/app/components/case/Result";
 import Script from "@/app/components/case/Script";
 import Logo from "@/app/components/global/Logo";
 
@@ -88,39 +87,59 @@ export default function Case1() {
     {
       setFlag(45, false);
       setFlag(51, true);
-    } else if (selectedItems.length === TEAM_5_FORM.answer2.length &&
+    } else {
+      setFlag(45,false);
+      setFlag(64,true);
+    }
+
+    if (selectedItems.length === TEAM_5_FORM.answer2.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer2.includes(idx)))
       {
       setFlag(46,false);
       setFlag(52,true);
+    } else {
+      setFlag(46,false);
+      setFlag(64,true);
     }
-    else if (selectedItems.length === TEAM_5_FORM.answer3.length &&
+    
+    if (selectedItems.length === TEAM_5_FORM.answer3.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer3.includes(idx)))
       {
       setFlag(47,false);
       setFlag(53,true);
+    } else {
+      setFlag(47,false);
+      setFlag(64,true);
     }
-    else if (selectedItems.length === TEAM_5_FORM.answer4.length &&
+    
+    if (selectedItems.length === TEAM_5_FORM.answer4.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer4.includes(idx)))
       {
       setFlag(48,false);
       setFlag(54,true);
+    } else {
+      setFlag(48,false);
+      setFlag(64,true);
     }
-    else if (selectedItems.length === TEAM_5_FORM.answer5.length &&
+
+    if (selectedItems.length === TEAM_5_FORM.answer5.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer5.includes(idx)))
       {
       setFlag(49,false);
       setFlag(55,true);
+    } else {
+      setFlag(49,false);
+      setFlag(64,true);
     }
-    else if (selectedItems.length === TEAM_5_FORM.answer6.length &&
+    
+    if (selectedItems.length === TEAM_5_FORM.answer6.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer6.includes(idx)))
       {
       setFlag(50,false);
       setFlag(56,true);
-    }
-    else 
-    {
-      setFlag(63,true);
+    } else {
+      setFlag(50,false);
+      setFlag(64,true);
     }
   };
 
@@ -220,6 +239,8 @@ export default function Case1() {
         setFlag(wrongPageFlagIndex, true);  // Wrong 페이지로 이동
     }
   };
+
+
 
   const handleWrongClick = (flagIndex: number) => {
     if (previousFlagIndex !== null) {
@@ -646,6 +667,15 @@ export default function Case1() {
 
       {flags[63] ? (
         <Success/>
+      ) : null}
+
+      {flags[64] ? (
+        <Wrong 
+          text={TEAM_5_CONSULT_RESULT_DATA.wrong}
+          handleClick={() =>{
+            handleWrongClick(64);
+          }}
+        />
       ) : null}
 
     <Logo/>
