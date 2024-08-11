@@ -441,13 +441,14 @@ export default function Case1() {
               Okay. who will be taking the medicine?
             </span>
           </div>
-          
+          <div className="gap-3">
             {TEAM_5_PATIENT.map((text, index) => (
               <TextBtn
               text={text.patient}
               handleClick={() => handlePatientSelection(index)}
               />
-            ))}          
+            ))}
+          </div>          
         </>
       ) : null}
 
