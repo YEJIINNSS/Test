@@ -436,7 +436,7 @@ export default function Case1() {
 
       {flags[2] ? (
         <>
-        <div className="flex flex-col items-center justify-center rounded-md w-full gap-3">
+        <div className="flex flex-col items-center justify-center rounded-md w-[50%] gap-3">
           <BackBtn handleClick = {() => handleBackBtn(1)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-8">
             <span className="text-xl font-bold text-gray-500">
