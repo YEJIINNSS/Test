@@ -89,8 +89,8 @@ export default function Case1() {
     event.preventDefault();
     
     if (
-      selectedItems.length === TEAM_5_FORM.answer1.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer1.includes(idx))
+      selectedItems1.length === TEAM_5_FORM.answer1.length &&
+      selectedItems1.every((idx) => TEAM_5_FORM.answer1.includes(idx))
     ) {
       setFlag(45, false);
       setFlag(51, true);
@@ -103,8 +103,8 @@ export default function Case1() {
   const handleSubmit2 = (event: React.FormEvent) => {
     event.preventDefault();
     if (
-      selectedItems.length === TEAM_5_FORM.answer2.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer2.includes(idx))
+      selectedItems2.length === TEAM_5_FORM.answer2.length &&
+      selectedItems2.every((idx) => TEAM_5_FORM.answer2.includes(idx))
     ) {
       setFlag(46, false);
       setFlag(52, true);
@@ -117,8 +117,8 @@ export default function Case1() {
   const handleSubmit3 = (event: React.FormEvent) => {
     event.preventDefault();
     if (
-      selectedItems.length === TEAM_5_FORM.answer3.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer3.includes(idx))
+      selectedItems3.length === TEAM_5_FORM.answer3.length &&
+      selectedItems3.every((idx) => TEAM_5_FORM.answer3.includes(idx))
     ) {
       setFlag(47, false);
       setFlag(53, true);
@@ -130,8 +130,8 @@ export default function Case1() {
     const handleSubmit4 = (event: React.FormEvent) => {
       event.preventDefault();
     if (
-      selectedItems.length === TEAM_5_FORM.answer4.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer4.includes(idx))
+      selectedItems4.length === TEAM_5_FORM.answer4.length &&
+      selectedItems4.every((idx) => TEAM_5_FORM.answer4.includes(idx))
     ) {
       setFlag(48, false);
       setFlag(54, true);
@@ -144,8 +144,8 @@ export default function Case1() {
     const handleSubmit5 = (event: React.FormEvent) => {
       event.preventDefault();
     if (
-      selectedItems.length === TEAM_5_FORM.answer5.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer5.includes(idx))
+      selectedItems5.length === TEAM_5_FORM.answer5.length &&
+      selectedItems5.every((idx) => TEAM_5_FORM.answer5.includes(idx))
     ) {
       setFlag(49, false);
       setFlag(55, true);
@@ -158,8 +158,8 @@ export default function Case1() {
   const handleSubmit6 = (event: React.FormEvent) => {
     event.preventDefault();
     if (
-      selectedItems.length === TEAM_5_FORM.answer6.length &&
-      selectedItems.every((idx) => TEAM_5_FORM.answer6.includes(idx))
+      selectedItems6.length === TEAM_5_FORM.answer6.length &&
+      selectedItems6.every((idx) => TEAM_5_FORM.answer6.includes(idx))
     ) {
       setFlag(50, false);
       setFlag(56, true);
