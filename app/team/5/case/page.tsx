@@ -470,13 +470,10 @@ export default function Case1() {
 
               <Question text={item.question} />
 
-              <div className="flex flex-col justify-center w-[75%] gap-5 justify-between mt-12">
               <TextBtn
               text={item.answer}
               handleClick={() => handleClick(index)}
               />
-            
-              </div>
           </>
         ) : null
       ))}
