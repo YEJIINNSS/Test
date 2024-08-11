@@ -37,7 +37,13 @@ export default function Case1() {
   const [selectedPatientIndex, setSelectedPatientIndex] = useState(0);
   const [correctProductIndex, setCorrectProductIndex] = useState(-1);
   const [previousFlagIndex, setPreviousFlagIndex] = useState<number | null>(null); //직전 FlagIndex
-  const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  
+  const [selectedItems1, setSelectedItems1] = useState<number[]>([]);
+  const [selectedItems2, setSelectedItems2] = useState<number[]>([]);
+  const [selectedItems3, setSelectedItems3] = useState<number[]>([]);
+  const [selectedItems4, setSelectedItems4] = useState<number[]>([]);
+  const [selectedItems5, setSelectedItems5] = useState<number[]>([]);
+  const [selectedItems6, setSelectedItems6] = useState<number[]>([]);
 
   // Example function to update a specific flag
   const setFlag = (index: number, value: boolean) => {
@@ -692,8 +698,8 @@ export default function Case1() {
         <Form
           formData={TEAM_5_FORM.data1}
           handleSubmit={handleSubmit1}
-          selectedItems={selectedItems}
-          setSelectedItems={setSelectedItems}
+          selectedItems={selectedItems1}
+          setSelectedItems={setSelectedItems1}
         />
       ) : null}
 
@@ -701,8 +707,8 @@ export default function Case1() {
         <Form
         formData={TEAM_5_FORM.data2}
         handleSubmit={handleSubmit2}
-          selectedItems={selectedItems}
-          setSelectedItems={setSelectedItems}
+          selectedItems={selectedItems2}
+          setSelectedItems={setSelectedItems2}
         />
       ) : null}
 
@@ -710,8 +716,8 @@ export default function Case1() {
         <Form
         formData={TEAM_5_FORM.data3}
         handleSubmit={handleSubmit3}
-          selectedItems={selectedItems}
-          setSelectedItems={setSelectedItems}
+          selectedItems={selectedItems3}
+          setSelectedItems={setSelectedItems3}
         />
       ) : null}
 
@@ -719,8 +725,8 @@ export default function Case1() {
         <Form
         formData={TEAM_5_FORM.data4}
           handleSubmit={handleSubmit4}
-          selectedItems={selectedItems}
-          setSelectedItems={setSelectedItems}
+          selectedItems={selectedItems4}
+          setSelectedItems={setSelectedItems4}
         />
       ) : null}
 
@@ -728,8 +734,8 @@ export default function Case1() {
         <Form
         formData={TEAM_5_FORM.data5}
           handleSubmit={handleSubmit5}
-          selectedItems={selectedItems}
-          setSelectedItems={setSelectedItems}
+          selectedItems={selectedItems5}
+          setSelectedItems={setSelectedItems5}
         />
       ) : null}
 
@@ -737,8 +743,8 @@ export default function Case1() {
         <Form
         formData={TEAM_5_FORM.data6}
           handleSubmit={handleSubmit6}
-          selectedItems={selectedItems}
-          setSelectedItems={setSelectedItems}
+          selectedItems={selectedItems6}
+          setSelectedItems={setSelectedItems6}
         />
       ) : null}
 
