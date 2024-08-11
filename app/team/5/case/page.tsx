@@ -31,7 +31,7 @@ import Success from "@/app/components/case/Success";
 
 export default function Case1() {
 
-  const array = new Array(65).fill(false);
+  const array = new Array(72).fill(false);
   const newArray = [true, ...array];
   const [flags, setFlags] = useState(newArray);
   const [selectedPatientIndex, setSelectedPatientIndex] = useState(0);
@@ -79,111 +79,189 @@ export default function Case1() {
       }
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit1 = (event: React.FormEvent) => {
     event.preventDefault();
-
-    let allConditionsMet = true;
     
     if (
       selectedItems.length === TEAM_5_FORM.answer1.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer1.includes(idx))
     ) {
       setFlag(45, false);
+      setFlag(51, true);
     } else {
-      allConditionsMet = false;
       setFlag(45, false);
+      setFlag(65, true);
     }
-    
+  };
+
+  const handleSubmit2 = (event: React.FormEvent) => {
+    event.preventDefault();
     if (
       selectedItems.length === TEAM_5_FORM.answer2.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer2.includes(idx))
     ) {
       setFlag(46, false);
+      setFlag(52, true);
     } else {
-      allConditionsMet = false;
       setFlag(46, false);
+      setFlag(66, true);
     }
+  };
 
+  const handleSubmit3 = (event: React.FormEvent) => {
+    event.preventDefault();
     if (
       selectedItems.length === TEAM_5_FORM.answer3.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer3.includes(idx))
     ) {
       setFlag(47, false);
+      setFlag(53, true);
     } else {
-      allConditionsMet = false;
       setFlag(47, false);
+      setFlag(67, true);
     }
-
+  };
+    const handleSubmit4 = (event: React.FormEvent) => {
+      event.preventDefault();
     if (
       selectedItems.length === TEAM_5_FORM.answer4.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer4.includes(idx))
     ) {
       setFlag(48, false);
+      setFlag(54, true);
     } else {
-      allConditionsMet = false;
       setFlag(48, false);
+      setFlag(68, true);
     }
+  };
 
+    const handleSubmit5 = (event: React.FormEvent) => {
+      event.preventDefault();
     if (
       selectedItems.length === TEAM_5_FORM.answer5.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer5.includes(idx))
     ) {
       setFlag(49, false);
+      setFlag(55, true);
     } else {
-      allConditionsMet = false;
       setFlag(49, false);
+      setFlag(69, true);
     }
+  };
 
+  const handleSubmit6 = (event: React.FormEvent) => {
+    event.preventDefault();
     if (
       selectedItems.length === TEAM_5_FORM.answer6.length &&
       selectedItems.every((idx) => TEAM_5_FORM.answer6.includes(idx))
     ) {
       setFlag(50, false);
-    } else {
-      allConditionsMet = false;
-      setFlag(50, false);
-    }
-
-    if (allConditionsMet) {
-      setFlag(51, true);
-      setFlag(52, true);
-      setFlag(53, true);
-      setFlag(54, true);
-      setFlag(55, true);
       setFlag(56, true);
     } else {
-      setFlag(64, true);
+      setFlag(50, false);
+      setFlag(70, true);
     }
   };
 
-  {/*
-  const goToFinalResult = () => {
+  const goToFinalResult1 = () => {    
+    setFlag(51, false);
+    setFlag(57, true); 
     
     setTimeout(() => {
       setFlag(57, false);
-      setFlag(26, true); 
-  
+      setFlag(58, true); 
+
       setTimeout(() => {
-        setFlag(26, false);
-        setFlag(27, true); 
-  
-        setTimeout(() => {
-          setFlag(27, false);
-          setFlag(28, true); 
+        setFlag(58, false);
+        setFlag(64, true); 
 
-          setTimeout(() => {
-            setFlag(28, false);
-            setFlag(29, true); 
-          }, 3000);
-
-        }, 3000);
-        
       }, 3000);
-      
+
     }, 3000);
-    
   }
-    */}
+  const goToFinalResult2 = () => { 
+    setFlag(52, false);
+    setFlag(57, true); 
+    
+    setTimeout(() => {
+      setFlag(57, false);
+      setFlag(59, true); 
+
+      setTimeout(() => {
+        setFlag(59, false);
+        setFlag(64, true); 
+
+      }, 3000);
+
+    }, 3000);
+  }
+  const goToFinalResult3 = () => {    
+    setFlag(53, false);
+    setFlag(57, true); 
+    
+    setTimeout(() => {
+      setFlag(57, false);
+      setFlag(60, true); 
+
+      setTimeout(() => {
+        setFlag(60, false);
+        setFlag(64, true); 
+
+      }, 3000);
+
+    }, 3000);
+  }
+
+  const goToFinalResult4 = () => {    
+    setFlag(54, false);
+    setFlag(57, true); 
+    
+    setTimeout(() => {
+      setFlag(57, false);
+      setFlag(61, true); 
+
+      setTimeout(() => {
+        setFlag(61, false);
+        setFlag(64, true); 
+
+      }, 3000);
+
+    }, 3000);
+  }
+
+  const goToFinalResult5 = () => {    
+    setFlag(55, false);
+    setFlag(57, true); 
+    
+    setTimeout(() => {
+      setFlag(57, false);
+      setFlag(62, true); 
+
+      setTimeout(() => {
+        setFlag(62, false);
+        setFlag(64, true); 
+
+      }, 3000);
+
+    }, 3000);
+  }
+
+  const goToFinalResult6 = () => {    
+    setFlag(56, false);
+    setFlag(57, true); 
+    
+    setTimeout(() => {
+      setFlag(57, false);
+      setFlag(63, true); 
+
+      setTimeout(() => {
+        setFlag(63, false);
+        setFlag(64, true); 
+
+      }, 3000);
+
+    }, 3000);
+  }
 
   // 환자 선택 -> 다른 flag로 이동
   const handlePatientSelection = (index: number) => {
@@ -613,7 +691,7 @@ export default function Case1() {
       {flags[45] ? (
         <Form
           formData={TEAM_5_FORM.data1}
-          handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit1}
           selectedItems={selectedItems}
           setSelectedItems={setSelectedItems}
         />
@@ -622,7 +700,7 @@ export default function Case1() {
       {flags[46] ? (
         <Form
         formData={TEAM_5_FORM.data2}
-        handleSubmit={handleSubmit}
+        handleSubmit={handleSubmit2}
           selectedItems={selectedItems}
           setSelectedItems={setSelectedItems}
         />
@@ -631,7 +709,7 @@ export default function Case1() {
       {flags[47] ? (
         <Form
         formData={TEAM_5_FORM.data3}
-        handleSubmit={handleSubmit}
+        handleSubmit={handleSubmit3}
           selectedItems={selectedItems}
           setSelectedItems={setSelectedItems}
         />
@@ -640,7 +718,7 @@ export default function Case1() {
       {flags[48] ? (
         <Form
         formData={TEAM_5_FORM.data4}
-          handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit4}
           selectedItems={selectedItems}
           setSelectedItems={setSelectedItems}
         />
@@ -649,7 +727,7 @@ export default function Case1() {
       {flags[49] ? (
         <Form
         formData={TEAM_5_FORM.data5}
-          handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit5}
           selectedItems={selectedItems}
           setSelectedItems={setSelectedItems}
         />
@@ -658,7 +736,7 @@ export default function Case1() {
       {flags[50] ? (
         <Form
         formData={TEAM_5_FORM.data6}
-          handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit6}
           selectedItems={selectedItems}
           setSelectedItems={setSelectedItems}
         />
@@ -667,37 +745,97 @@ export default function Case1() {
       {flags[51] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right1}
-        handleClick={() => handleCorrectFormClick(51, 58)}/>
+        handleClick={() => goToFinalResult1}/>
+      ) : null}
+
+      {flags[65] ? (
+        <Wrong 
+          text={TEAM_5_CONSULT_RESULT_DATA.wrong}
+          handleClick={() =>{
+            setFlag(65, false);
+            setFlag(45, true);
+          }}
+        />
       ) : null}
 
       {flags[52] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right2}
-        handleClick={() => handleCorrectFormClick(52, 59)}/>
+        handleClick={() => goToFinalResult2}/>
+      ) : null}
+
+      {flags[66] ? (
+        <Wrong 
+          text={TEAM_5_CONSULT_RESULT_DATA.wrong}
+          handleClick={() =>{
+            setFlag(66, false);
+            setFlag(46, true);
+          }}
+        />
       ) : null}
 
       {flags[53] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right3}
-        handleClick={() => handleCorrectFormClick(53, 60)}/>
+        handleClick={() => goToFinalResult3}/>
+      ) : null}
+
+      {flags[67] ? (
+        <Wrong 
+          text={TEAM_5_CONSULT_RESULT_DATA.wrong}
+          handleClick={() =>{
+            setFlag(67, false);
+            setFlag(47, true);
+          }}
+        />
       ) : null}
 
       {flags[54] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right4}
-        handleClick={() => handleCorrectFormClick(54, 61)}/>
+        handleClick={() => goToFinalResult4}/>
+      ) : null}
+
+      {flags[68] ? (
+        <Wrong 
+          text={TEAM_5_CONSULT_RESULT_DATA.wrong}
+          handleClick={() =>{
+            setFlag(68, false);
+            setFlag(48, true);
+          }}
+        />
       ) : null}
 
       {flags[55] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right5}
-        handleClick={() => handleCorrectFormClick(55, 62)}/>
+        handleClick={() => goToFinalResult5}/>
+      ) : null}
+
+      {flags[65] ? (
+        <Wrong 
+          text={TEAM_5_CONSULT_RESULT_DATA.wrong}
+          handleClick={() =>{
+            setFlag(69, false);
+            setFlag(49, true);
+          }}
+        />
       ) : null}
 
       {flags[56] ? (
         <FormCorrect
         text = {TEAM_5_CONSULT_RESULT_DATA.right6}
-        handleClick={() => handleCorrectFormClick(56, 63)}/>
+        handleClick={() => goToFinalResult6}/>
+      ) : null}
+
+      {flags[66] ? (
+        <Wrong 
+          text={TEAM_5_CONSULT_RESULT_DATA.wrong}
+          handleClick={() =>{
+            setFlag(66, false);
+            setFlag(50, true);
+          }}
+        />
       ) : null}
 
       {flags[57] ? (
@@ -724,17 +862,8 @@ export default function Case1() {
         ) : null
       ))}
 
-      {flags[63] ? (
-        <Success/>
-      ) : null}
-
       {flags[64] ? (
-        <Wrong 
-          text={TEAM_5_CONSULT_RESULT_DATA.wrong}
-          handleClick={() =>{
-            handleWrongFormClick(64);
-          }}
-        />
+        <Success/>
       ) : null}
 
     <Logo/>
