@@ -1,4 +1,4 @@
-const rightResult1 = 
+const rightResult = [
 "Patient Consult Instructions:\n"+
 "1. Administer every 4 hours as needed.\n"+
 "2. Administer 5 mL per dose.\n"+
@@ -6,8 +6,8 @@ const rightResult1 =
 "4. Do not take medications containing antihistamines (oral medications for rhinitis [nasal inflammation], motion sickness medications, allergy medications) while taking this medication.\n"+
 "5. Consult a doctor/pharmacist if symptoms do not improve after taking the medicine 5-6 times.\n"+
 "6. Increase fluid intake."
+,
 
-const rightResult2 = 
 "Patient Consult Instructions:\n"+
 "1. Administer every 4 hours as needed.\n"+
 "2. Administer 20 mL per dose.\n"+
@@ -20,8 +20,8 @@ const rightResult2 =
 "7. Do not take this medication for a prolonged period.\n"+
 "8. It may cause drowsiness.\n"+
 "9. Increase fluid intake."
+,
 
-const rightResult3 = 
 "Patient Consult Instructions:\n"+
 "1. Administer 10-20mL per dose.\n"+
 "2. Administer 3-4 times daily.\n"+
@@ -35,8 +35,8 @@ const rightResult3 =
 "7. When co-administered with coumarin anticoagulants (such as warfarin), there is a potential for increased anticoagulant effects, leading to an increased risk of severe gastrointestinal bleeding.\n"+
 "8. When co-administered with selective serotonin reuptake inhibitors (SSRIs), there is an increased risk of gastrointestinal bleeding.\n"+
 "9. Increase fluid intake."
+,
 
-const rightResult4 = 
 "Patient Consult Instructions:\n"+
 "1. For a 30-month-old child, administer 5ml per dose.\n"+
 "2. Take it three times a day 30 minutes after meals.\n"+
@@ -49,8 +49,8 @@ const rightResult4 =
 "   Exceeding the maximum daily dose of acetaminophen (4,000mg) can cause liver damage.\n"+
 "   Therefore, do not exceed the maximum daily dose of this medication (4,000mg) and do not take it with other products containing acetaminophen.\n"+
 "9. Do not take this medication with other cold medicines, antitussives, antipyretic painkillers, sedatives, medicines containing antihistamine(oral medication for rhinitis, motion sickness medication, allergy medication)"
+,
 
-const rightResult5 = 
 "Patient Consult Instructions:\n"+
 "1. Administer two-thirds bag per dose for adults.\n"+
 "2. Administer once daily, right after meal.\n"+
@@ -61,8 +61,8 @@ const rightResult5 =
 "6. This medication does not conceal infection symptoms and does not delay the diagnosis of infectious complications.\n"+
 "7. It could cause drowsiness.\n"+
 "8. Increase fluid intake."
+,
 
-const rightResult6 = 
 "Patient Consult Instructions:\n"+
 "1. Administer 3 times daily, 30 minutes after meal.\n"+
 "2. Alcohol can induce liver injury if taken with this drug, so you should avoid drinking alcohol while taking this medication.\n"+
@@ -72,16 +72,12 @@ const rightResult6 =
 "   Please keep this medicine out of reach of children.\n"+
 "6. You cannot take this medication with MAO inhibitors or within 2 weeks after withdrawal of MAO inhibitors(antidepressants, antipsychotics, mood stabilizers, Parkinson's medications, etc.)\n"+
 "7. Increase fluid intake."
+]
 
 const wrongResult = "It appears that you gave wrong information to the patient."
 
 const TEAM_5_CONSULT_RESULT_DATA = {
-    right1: rightResult1,
-    right2: rightResult2,
-    right3: rightResult3,
-    right4: rightResult4,
-    right5: rightResult5,
-    right6: rightResult6,
+    right: rightResult,
     wrong: wrongResult
 }
 

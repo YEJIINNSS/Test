@@ -89,8 +89,8 @@ export default function Case1() {
     event.preventDefault();
     
     if (
-      selectedItems1.length === TEAM_5_FORM.answer1.length &&
-      selectedItems1.every((idx) => TEAM_5_FORM.answer1.includes(idx))
+      selectedItems1.length === TEAM_5_FORM.answer[0].length &&
+      selectedItems1.every((idx) => TEAM_5_FORM.answer[0].includes(idx))
     ) {
       setFlag(45, false);
       setFlag(51, true);
@@ -103,8 +103,8 @@ export default function Case1() {
   const handleSubmit2 = (event: React.FormEvent) => {
     event.preventDefault();
     if (
-      selectedItems2.length === TEAM_5_FORM.answer2.length &&
-      selectedItems2.every((idx) => TEAM_5_FORM.answer2.includes(idx))
+      selectedItems2.length === TEAM_5_FORM.answer[1].length &&
+      selectedItems2.every((idx) => TEAM_5_FORM.answer[1].includes(idx))
     ) {
       setFlag(46, false);
       setFlag(52, true);
@@ -117,8 +117,8 @@ export default function Case1() {
   const handleSubmit3 = (event: React.FormEvent) => {
     event.preventDefault();
     if (
-      selectedItems3.length === TEAM_5_FORM.answer3.length &&
-      selectedItems3.every((idx) => TEAM_5_FORM.answer3.includes(idx))
+      selectedItems3.length === TEAM_5_FORM.answer[2].length &&
+      selectedItems3.every((idx) => TEAM_5_FORM.answer[2].includes(idx))
     ) {
       setFlag(47, false);
       setFlag(53, true);
@@ -130,8 +130,8 @@ export default function Case1() {
     const handleSubmit4 = (event: React.FormEvent) => {
       event.preventDefault();
     if (
-      selectedItems4.length === TEAM_5_FORM.answer4.length &&
-      selectedItems4.every((idx) => TEAM_5_FORM.answer4.includes(idx))
+      selectedItems4.length === TEAM_5_FORM.answer[3].length &&
+      selectedItems4.every((idx) => TEAM_5_FORM.answer[3].includes(idx))
     ) {
       setFlag(48, false);
       setFlag(54, true);
@@ -144,8 +144,8 @@ export default function Case1() {
     const handleSubmit5 = (event: React.FormEvent) => {
       event.preventDefault();
     if (
-      selectedItems5.length === TEAM_5_FORM.answer5.length &&
-      selectedItems5.every((idx) => TEAM_5_FORM.answer5.includes(idx))
+      selectedItems5.length === TEAM_5_FORM.answer[4].length &&
+      selectedItems5.every((idx) => TEAM_5_FORM.answer[4].includes(idx))
     ) {
       setFlag(49, false);
       setFlag(55, true);
@@ -158,8 +158,8 @@ export default function Case1() {
   const handleSubmit6 = (event: React.FormEvent) => {
     event.preventDefault();
     if (
-      selectedItems6.length === TEAM_5_FORM.answer6.length &&
-      selectedItems6.every((idx) => TEAM_5_FORM.answer6.includes(idx))
+      selectedItems6.length === TEAM_5_FORM.answer[5].length &&
+      selectedItems6.every((idx) => TEAM_5_FORM.answer[5].includes(idx))
     ) {
       setFlag(50, false);
       setFlag(56, true);
@@ -450,7 +450,6 @@ export default function Case1() {
         objectPosition="center"
         className="-z-10"
       />
-      <Footer/>
 
       {flags[0] ? (
         <div className="flex items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 fixed bottom-[15%]">
@@ -474,6 +473,7 @@ export default function Case1() {
               text={item.answer}
               handleClick={() => handleClick(index)}
               />
+              
           </>
         ) : null
       ))}
@@ -502,6 +502,10 @@ export default function Case1() {
 
       {flags[3] ? (
         <div className="flex flex-col items-center justify-center">
+          <BackBtn handleClick = {() => {
+            setFlag(3, false);
+            setFlag(2, true);
+          }}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
               Choose the best treatment options.
@@ -528,6 +532,10 @@ export default function Case1() {
 
       {flags[4] ? (
         <div className="flex flex-col items-center justify-center">
+          <BackBtn handleClick = {() => {
+            setFlag(4, false);
+            setFlag(2, true);
+          }}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -554,6 +562,10 @@ export default function Case1() {
 
       {flags[5] ? (
         <div className="flex flex-col items-center justify-center">
+          <BackBtn handleClick = {() => {
+            setFlag(5, false);
+            setFlag(2, true);
+          }}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -580,6 +592,10 @@ export default function Case1() {
 
       {flags[6] ? (
         <div className="flex flex-col items-center justify-center">
+          <BackBtn handleClick = {() => {
+            setFlag(6, false);
+            setFlag(2, true);
+          }}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-10">
             <span className="text-xl text-gray-500">
             Choose the best treatment options.
@@ -693,62 +709,62 @@ export default function Case1() {
 
       {flags[45] ? (
         <Form
-          formData={TEAM_5_FORM.data1}
-          handleSubmit={handleSubmit1}
+          formData={TEAM_5_FORM.data[0]}
           selectedItems={selectedItems1}
+          handleSubmit={handleSubmit1}
           setSelectedItems={setSelectedItems1}
         />
       ) : null}
 
       {flags[46] ? (
         <Form
-        formData={TEAM_5_FORM.data2}
-        handleSubmit={handleSubmit2}
+          formData={TEAM_5_FORM.data[1]}
           selectedItems={selectedItems2}
+          handleSubmit={handleSubmit2}
           setSelectedItems={setSelectedItems2}
         />
       ) : null}
 
       {flags[47] ? (
         <Form
-        formData={TEAM_5_FORM.data3}
-        handleSubmit={handleSubmit3}
+          formData={TEAM_5_FORM.data[2]}
           selectedItems={selectedItems3}
+          handleSubmit={handleSubmit3}
           setSelectedItems={setSelectedItems3}
         />
       ) : null}
 
       {flags[48] ? (
         <Form
-        formData={TEAM_5_FORM.data4}
-          handleSubmit={handleSubmit4}
+          formData={TEAM_5_FORM.data[3]}
           selectedItems={selectedItems4}
+          handleSubmit={handleSubmit4}
           setSelectedItems={setSelectedItems4}
         />
       ) : null}
 
       {flags[49] ? (
         <Form
-        formData={TEAM_5_FORM.data5}
-          handleSubmit={handleSubmit5}
+          formData={TEAM_5_FORM.data[4]}
           selectedItems={selectedItems5}
+          handleSubmit={handleSubmit5}
           setSelectedItems={setSelectedItems5}
         />
       ) : null}
 
       {flags[50] ? (
         <Form
-        formData={TEAM_5_FORM.data6}
-          handleSubmit={handleSubmit6}
+          formData={TEAM_5_FORM.data[5]}
           selectedItems={selectedItems6}
+          handleSubmit={handleSubmit6}
           setSelectedItems={setSelectedItems6}
         />
       ) : null}
 
       {flags[51] ? (
         <FormCorrect
-        text = {TEAM_5_CONSULT_RESULT_DATA.right1}
-        handleClick={() => goToFinalResult1}/>
+        text = {TEAM_5_CONSULT_RESULT_DATA.right[0]}
+        handleClick={goToFinalResult1}/>
       ) : null}
 
       {flags[65] ? (
@@ -763,8 +779,8 @@ export default function Case1() {
 
       {flags[52] ? (
         <FormCorrect
-        text = {TEAM_5_CONSULT_RESULT_DATA.right2}
-        handleClick={() => goToFinalResult2}/>
+        text = {TEAM_5_CONSULT_RESULT_DATA.right[1]}
+        handleClick={goToFinalResult2}/>
       ) : null}
 
       {flags[66] ? (
@@ -779,8 +795,8 @@ export default function Case1() {
 
       {flags[53] ? (
         <FormCorrect
-        text = {TEAM_5_CONSULT_RESULT_DATA.right3}
-        handleClick={() => goToFinalResult3}/>
+        text = {TEAM_5_CONSULT_RESULT_DATA.right[2]}
+        handleClick={goToFinalResult3}/>
       ) : null}
 
       {flags[67] ? (
@@ -795,8 +811,8 @@ export default function Case1() {
 
       {flags[54] ? (
         <FormCorrect
-        text = {TEAM_5_CONSULT_RESULT_DATA.right4}
-        handleClick={() => goToFinalResult4}/>
+        text = {TEAM_5_CONSULT_RESULT_DATA.right[3]}
+        handleClick={goToFinalResult4}/>
       ) : null}
 
       {flags[68] ? (
@@ -811,8 +827,8 @@ export default function Case1() {
 
       {flags[55] ? (
         <FormCorrect
-        text = {TEAM_5_CONSULT_RESULT_DATA.right5}
-        handleClick={() => goToFinalResult5}/>
+        text = {TEAM_5_CONSULT_RESULT_DATA.right[4]}
+        handleClick={goToFinalResult5}/>
       ) : null}
 
       {flags[65] ? (
@@ -827,8 +843,8 @@ export default function Case1() {
 
       {flags[56] ? (
         <FormCorrect
-        text = {TEAM_5_CONSULT_RESULT_DATA.right6}
-        handleClick={() => goToFinalResult6}/>
+        text = {TEAM_5_CONSULT_RESULT_DATA.right[5]}
+        handleClick={goToFinalResult6}/>
       ) : null}
 
       {flags[66] ? (
@@ -855,12 +871,6 @@ export default function Case1() {
           <>   
             <Question text={item.question} />
             <Question text={item.answer} />
-            <Link href="/" className="fixed left-10 top-10">
-            <div className="bg-[#5BC17F] px-5 py-2 rounded-full">
-              <span className="text-white">Go Back to Main Page</span>
-            </div>
-          </Link>
-          
           </>
         ) : null
       ))}
