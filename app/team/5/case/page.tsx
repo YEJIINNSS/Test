@@ -22,6 +22,7 @@ import TEAM_5_FORM from "@/app/constants/5/FormData";
 import TEAM_5_PRODUCT_CHOOSE_RESULT from "@/app/constants/5/ProductChooseResult";
 
 import Success from "@/app/components/case/Success";
+import PatientBtn from "@/app/components/case/PatientBtn";
 
 export default function Case1() {
 
@@ -441,14 +442,12 @@ export default function Case1() {
               Okay. who will be taking the medicine?
             </span>
           </div>
-          <div className="gap-3">
             {TEAM_5_PATIENT.map((text, index) => (
-              <TextBtn
+              <PatientBtn
               text={text.patient}
               handleClick={() => handlePatientSelection(index)}
               />
-            ))}
-          </div>          
+            ))}          
         </>
       ) : null}
 
