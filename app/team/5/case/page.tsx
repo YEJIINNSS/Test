@@ -20,12 +20,7 @@ import TEAM_5_CONSULT_RESULT_DATA from "@/app/constants/5/ConsultData";
 import TEAM_5_FINALRESULT from "@/app/constants/5/FinalResultData";
 import TEAM_5_FORM from "@/app/constants/5/FormData";
 
-import productChooseResult1 from "@/app/constants/5/ProductChooseResult/productChooseResult1";
-import productChooseResult2 from "@/app/constants/5/ProductChooseResult/productChooseResult2";
-import productChooseResult3 from "@/app/constants/5/ProductChooseResult/productChooseResult3";
-import productChooseResult4 from "@/app/constants/5/ProductChooseResult/productChooseResult4";
-import productChooseResult5 from "@/app/constants/5/ProductChooseResult/productChooseResult5";
-import productChooseResult6 from "@/app/constants/5/ProductChooseResult/productChooseResult6";
+import TEAM_5_PRODUCT_CHOOSE_RESULT from "@/app/constants/5/ProductChooseResult";
 
 import Success from "@/app/components/case/Success";
 
@@ -325,14 +320,6 @@ export default function Case1() {
     [40, 41, 42, 43, 44] // 환자 6
   ];
 
-  const productChooseResults = [
-    productChooseResult1,
-    productChooseResult2,
-    productChooseResult3,
-    productChooseResult4,
-    productChooseResult5,
-    productChooseResult6
-  ];
 
   const getWrongProductIndexes = (patientIndex: number) => {
     switch (patientIndex) {
@@ -675,33 +662,33 @@ export default function Case1() {
       ) : null}
 
       {flags[9] ? (
-        <Correct text={productChooseResult1[0]} handleClick={() => handleCorrectClick(9, 45)}/>
+        <Correct text={TEAM_5_PRODUCT_CHOOSE_RESULT[0][0]} handleClick={() => handleCorrectClick(9, 45)}/>
       ) : null}
 
       {flags[10] ? (
-        <Correct text={productChooseResult2[2]} handleClick={() => handleCorrectClick(10, 46)}/>
+        <Correct text={TEAM_5_PRODUCT_CHOOSE_RESULT[1][2]} handleClick={() => handleCorrectClick(10, 46)}/>
       ) : null}
 
       {flags[11] ? (
-        <Correct text={productChooseResult3[1]} handleClick={() => handleCorrectClick(11, 47)}/>
+        <Correct text={TEAM_5_PRODUCT_CHOOSE_RESULT[2][1]} handleClick={() => handleCorrectClick(11, 47)}/>
       ) : null}
 
       {flags[12] ? (
-        <Correct text={productChooseResult4[4]} handleClick={() => handleCorrectClick(12, 48)}/>
+        <Correct text={TEAM_5_PRODUCT_CHOOSE_RESULT[3][4]} handleClick={() => handleCorrectClick(12, 48)}/>
       ) : null}
 
       {flags[13] ? (
-        <Correct text={productChooseResult5[5]} handleClick={() => handleCorrectClick(13, 49)}/>
+        <Correct text={TEAM_5_PRODUCT_CHOOSE_RESULT[4][5]} handleClick={() => handleCorrectClick(13, 49)}/>
       ) : null}
 
       {flags[14] ? (
-        <Correct text={productChooseResult6[3]} handleClick={() => handleCorrectClick(14, 50)}/>
+        <Correct text={TEAM_5_PRODUCT_CHOOSE_RESULT[5][3]} handleClick={() => handleCorrectClick(14, 50)}/>
       ) : null}
 
       {wrongFlags[selectedPatientIndex].map((flagIndex, idx) => (
       flags[flagIndex] ? (
         <Wrong
-          text={productChooseResults[selectedPatientIndex][getWrongProductIndexes(selectedPatientIndex)[idx]]}
+          text={TEAM_5_PRODUCT_CHOOSE_RESULT[selectedPatientIndex][getWrongProductIndexes(selectedPatientIndex)[idx]]}
           handleClick={() =>{
             handleWrongClick(flagIndex)
           }}
