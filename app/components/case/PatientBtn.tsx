@@ -14,7 +14,7 @@ handleClick,
   return (
       <button
         onClick={handleClick}
-        className="flex items-center justify-center bg-[#D8E4D8] w-[75%] p-5 gap-5 shadow-lg rounded-lg"
+        className="flex items-center justify-center bg-[#D8E4D8] w-[50%] p-5 gap-5 shadow-lg rounded-lg"
         style={gradientStyle}
       >
         <span className="text-gray-600 text-lg whitespace-pre-line">
