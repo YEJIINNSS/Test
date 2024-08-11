@@ -374,6 +374,7 @@ export default function Case1() {
     }
   };
 
+  {/*
   const handleWrongFormClick = (checkboxFlagIndex: number) => {
     if (previousFlagIndex !== null) {
       setFlag(checkboxFlagIndex, false);
@@ -381,6 +382,7 @@ export default function Case1() {
       setPreviousFlagIndex(null);
     }
   };
+*/}
 
   const handleCorrectClick = (flagIndex: number, checkboxFlagIndex: number) => {
     setFlag(flagIndex, false);
@@ -831,7 +833,7 @@ export default function Case1() {
         handleClick={goToFinalResult5}/>
       ) : null}
 
-      {flags[65] ? (
+      {flags[69] ? (
         <Wrong 
           text={TEAM_5_CONSULT_RESULT_DATA.wrong}
           handleClick={() =>{
@@ -847,7 +849,7 @@ export default function Case1() {
         handleClick={goToFinalResult6}/>
       ) : null}
 
-      {flags[66] ? (
+      {flags[70] ? (
         <Wrong 
           text={TEAM_5_CONSULT_RESULT_DATA.wrong}
           handleClick={() =>{
