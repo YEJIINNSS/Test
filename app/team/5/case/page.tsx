@@ -12,7 +12,6 @@ import Correct from "@/app/components/case/Correct";
 import Wrong from "@/app/components/case/Wrong";
 import Form from "@/app/components/case/Form";
 import React from "react";
-import Script from "@/app/components/case/Script";
 import Logo from "@/app/components/global/Logo";
 
 import TEAM_5_CONSULT_RESULT_DATA from "@/app/constants/5/ConsultData";
@@ -351,8 +350,6 @@ export default function Case1() {
     }
   };
 
-
-
   const handleWrongClick = (flagIndex: number) => {
     if (previousFlagIndex !== null) {
       setFlag(flagIndex, false);
@@ -361,41 +358,10 @@ export default function Case1() {
     }
   };
 
-  {/*
-  const handleWrongFormClick = (checkboxFlagIndex: number) => {
-    if (previousFlagIndex !== null) {
-      setFlag(checkboxFlagIndex, false);
-      setFlag(previousFlagIndex, true); // 이전 flagindex로 이동
-      setPreviousFlagIndex(null);
-    }
-  };
-*/}
-
   const handleCorrectClick = (flagIndex: number, checkboxFlagIndex: number) => {
     setFlag(flagIndex, false);
     setFlag(checkboxFlagIndex, true);
   };
-
-  const handleCorrectFormClick = (currentFlagIndex: number, nextFlagIndex: number) => {
-    if (flags[currentFlagIndex]) {
-          setFlags((prevFlags) => {
-              const updatedFlags = [...prevFlags];
-              updatedFlags[57] = true; // flags[57] 표시
-              return updatedFlags;
-          });
-
-          setTimeout(() => {
-          // flags[57]을 해제, 다음 플래그로
-          setFlags((prevFlags) => {
-              const updatedFlags = [...prevFlags];
-                    updatedFlags[57] = false; 
-                    updatedFlags[currentFlagIndex] = false;
-                    updatedFlags[nextFlagIndex] = true;
-                    return updatedFlags;
-                });
-            }, 3000);
-    }
-};
 
   {/* 의사와 환자와의 대화 flag idx 1 */}
   const clickHandlers:any = [];
@@ -468,25 +434,21 @@ export default function Case1() {
       ))}
 
       {flags[2] ? (
-        <div className="flex flex-col items-center justify-center">
+        <>
           <BackBtn handleClick = {() => handleBackBtn(1)}/>
           <div className="flex flex-col items-center justify-center rounded-md w-3/5 h-14 bg-white opacity-90 mb-8">
             <span className="text-xl font-bold text-gray-500">
               Okay. who will be taking the medicine?
             </span>
           </div>
-          <div className="flex flex-col justify-center w-full gap-3 justify-between mt-2">
+          
             {TEAM_5_PATIENT.map((text, index) => (
-            <div className="shadow-lg opacity-90">
-              
               <TextBtn
               text={text.patient}
               handleClick={() => handlePatientSelection(index)}
               />
-              </div>
-            ))}
-          </div>
-        </div>
+            ))}          
+        </>
       ) : null}
 
       {flags[3] ? (
